@@ -2,7 +2,7 @@
 %  For support, please attach all files needed for compiling as well as the log file, and specify your operating system, LaTeX version, and LaTeX editor.
 
 %=================================================================
-\documentclass[journal,article,submit,moreauthors,pdftex]{Definitions/mdpi} 
+\documentclass[sensors,article,submit,moreauthors,pdftex]{Definitions/mdpi} 
 
 % For posting an early version of this manuscript as a preprint, you may use "preprints" as the journal and change "submit" to "accept". The document class line would be, e.g., \documentclass[preprints,article,accept,moreauthors,pdftex]{mdpi}. This is especially recommended for submission to arXiv, where line numbers should be removed before posting. For preprints.org, the editorial staff will make this change immediately prior to posting.
 
@@ -10,7 +10,7 @@
 % Class Options:
 %--------------------
 %----------
-% sensors
+% journal
 %----------
 % Choose between the following MDPI journals:
 % acoustics, actuators, addictions, admsci, adolescents, aerospace, agriculture, agriengineering, agronomy, ai, algorithms, allergies, analytica, animals, antibiotics, antibodies, antioxidants, appliedchem, applmech, applmicrobiol, applnano, applsci, arts, asi, atmosphere, atoms, audiolres, automation, axioms, batteries, bdcc, behavsci, beverages, biochem, bioengineering, biologics, biology, biomechanics, biomedicines, biomedinformatics, biomimetics, biomolecules, biophysica, biosensors, biotech, birds, bloods, brainsci, buildings, businesses, cancers, carbon, cardiogenetics, catalysts, cells, ceramics, challenges, chemengineering, chemistry, chemosensors, chemproc, children, civileng, cleantechnol, climate, clinpract, clockssleep, cmd, coatings, colloids, compounds, computation, computers, condensedmatter, conservation, constrmater, cosmetics, crops, cryptography, crystals, curroncol, cyber, dairy, data, dentistry, dermato, dermatopathology, designs, diabetology, diagnostics, digital, disabilities, diseases, diversity, dna, drones, dynamics, earth, ebj, ecologies, econometrics, economies, education, ejihpe, electricity, electrochem, electronicmat, electronics, encyclopedia, endocrines, energies, eng, engproc, entropy, environments, environsciproc, epidemiologia, epigenomes, fermentation, fibers, fire, fishes, fluids, foods, forecasting, forensicsci, forests, fractalfract, fuels, futureinternet, futuretransp, futurepharmacol, futurephys, galaxies, games, gases, gastroent, gastrointestdisord, gels, genealogy, genes, geographies, geohazards, geomatics, geosciences, geotechnics, geriatrics, hazardousmatters, healthcare, hearts, hemato, heritage, highthroughput, histories, horticulturae, humanities, hydrogen, hydrology, hygiene, idr, ijerph, ijfs, ijgi, ijms, ijns, ijtm, ijtpp, immuno, informatics, information, infrastructures, inorganics, insects, instruments, inventions, iot, j, jcdd, jcm, jcp, jcs, jdb, jfb, jfmk, jimaging, jintelligence, jlpea, jmmp, jmp, jmse, jne, jnt, jof, joitmc, jor, journalmedia, jox, jpm, jrfm, jsan, jtaer, jzbg, kidney, land, languages, laws, life, liquids, literature, livers, logistics, lubricants, machines, macromol, magnetism, magnetochemistry, make, marinedrugs, materials, materproc, mathematics, mca, measurements, medicina, medicines, medsci, membranes, metabolites, metals, metrology, micro, microarrays, microbiolres, micromachines, microorganisms, minerals, mining, modelling, molbank, molecules, mps, mti, nanoenergyadv, nanomanufacturing, nanomaterials, ncrna, network, neuroglia, neurolint, neurosci, nitrogen, notspecified, nri, nursrep, nutrients, obesities, oceans, ohbm, onco, oncopathology, optics, oral, organics, osteology, oxygen, parasites, parasitologia, particles, pathogens, pathophysiology, pediatrrep, pharmaceuticals, pharmaceutics, pharmacy, philosophies, photochem, photonics, physchem, physics, physiolsci, plants, plasma, pollutants, polymers, polysaccharides, proceedings, processes, prosthesis, proteomes, psych, psychiatryint, publications, quantumrep, quaternary, qubs, radiation, reactions, recycling, regeneration, religions, remotesensing, reports, reprodmed, resources, risks, robotics, safety, sci, scipharm, sensors, separations, sexes, signals, sinusitis, smartcities, sna, societies, socsci, soilsystems, solids, sports, standards, stats, stresses, surfaces, surgeries, suschem, sustainability, symmetry, systems, taxonomy, technologies, telecom, textiles, thermo, tourismhosp, toxics, toxins, transplantology, traumas, tropicalmed, universe, urbansci, uro, vaccines, vehicles, vetsci, vibration, viruses, vision, water, wevj, women, world 
@@ -82,7 +82,7 @@
 \AuthorNames{Shanliang Yao, Xiaohui Zhu, Yong Yue, Yutao Yue, Tianlei Shi, Kaiyuan Yang, Yijie Chu.}
 
 % MDPI internal command: Authors, for citation in the left column
-\AuthorCitation{Shanliang Yao, Xiaohui Zhu, Yong Yue, Yutao Yue, Tianlei Shi, Kaiyuan Yang, Yijie Chu.}
+\AuthorCitation{Yao, S; Zhu, X; Yue, Y; Yue, Y; Shi, T; Yang, K; Chu, Y.}
 % If this is a Chicago style journal: Lastname, Firstname, Firstname Lastname, and Firstname Lastname.
 
 % Affiliations / Addresses (Add [1] after \address if there is only one affiliation.)
@@ -219,7 +219,7 @@ The full name of PP-YOLO is PaddlePaddle-You Look Only Once, which is an improve
 From Figure \ref{fig:pp-yolo}, By combining multiple tricks, Long et al. (2020) published PP-YOLO model which has an accuracy of 45.2\% and speed of 72.9 FPS in the COCO dataset, exceeding the existing state-of-the-art detectors. 
 PP-YOLO does not propose a novel detection model but achieves a new object detector which can be directly applied to actual applications. Besides, PP-YOLO has achieved a balance of accuracy and speed and tried various techniques. These technologies are the goal of improving the accuracy of the detector as much as possible while ensuring that the speed is almost unchanged, and hardly increase the number of model parameters.
 
-In terms of the backbone network, ResNet is used in PP-YOLO. One of the reasons is that ResNet has been deeply optimized and widely used, which makes its inference speed faster. Another reason is that the backbone network and the data augmentation method are relatively independent factors, and are not related to the trick of the paper's exploration. At the same time, many papers have been studied accordingly, so the author did not make relevant repeated explorations. Therefore, the author used the manual method to set the parameters along the route of YOLOv3, but the author believes that a better backbone network, a better augmentation scheme, and Neural Architecture Search (NAS) search hyperparameters can further improve the performance of PP-YOLO.
+In terms of the backbone network, ResNet is used in PP-YOLO. One of the reasons is that ResNet has been deeply optimized and widely used, which makes its inference speed faster. Another reason is that the backbone network and the data augmentation method are relatively independent factors, and are not related to the trick of the paper's exploration. At the same time, many papers have been studied accordingly, so the author did not make relevant repeated explorations. Therefore, the author used the manual method to set the parameters along the route of YOLOv3, but the author believed that a better backbone network, a better augmentation scheme, and Neural Architecture Search (NAS) search hyperparameters can further improve the performance of PP-YOLO.
 
 
 \begin{figure}[htbp]
@@ -246,16 +246,19 @@ The neck of the network is where the network is made robust by making it scale a
 \end{itemize}
 
 
+\begin{itemize}
 
+\item{Head}
 
+This is the final layer of the network which outputs the bounding box coordinates, category and confidence score of the object. The detection head includes two convolutional layers. A 3 x 3 convolutional layer and a 1 x 1 convolutional layer are used to obtain the final prediction result. For classification and positioning, cross-entropy loss and Smooth L1 loss are used accordingly, and confidence loss is used to monitor the object score and to identify whether there is an object.
+\end{itemize}
 
+The paper did not propose a new detection method but focused on combining existing detection methods to achieve an efficient detector. Since many techniques cannot be directly applied to YOLOv3, they need to be adjusted according to its structure.
 
-
-
-\begin{table*}[!htbp]
+\begin{table}[htbp]
 \centering
 \caption{The ablation study of tricks on the MS-COCO minival split (Source: \cite{long2020pp}).}
-\begin{tabular}{lllllll} 
+\begin{tabular}{lp{3cm}<{}lllll} 
 \toprule
 \textbf{Group}&\textbf{Methods}&\textbf{mAP}&\textbf{Parameters}&\textbf{GFLOPs}&\textbf{infer time}&\textbf{FPS}\\
 \midrule
@@ -273,15 +276,7 @@ J& I + Better ImageNet Pretrain& 44.6& 43.93 M & 45.12 & 13.7 ms& 72.9\\
 \bottomrule
 \end{tabular}
 \label{tbl:ablation study pp-yolo}
-\end{table*}
-
-\begin{itemize}
-\item{Head}
-
-This is the final layer of the network which outputs the bounding box coordinates, category and confidence score of the object. The detection head includes two convolutional layers. A 3 x 3 convolutional layer and a 1 x 1 convolutional layer are used to obtain the final prediction result. For classification and positioning, cross-entropy loss and Smooth L1 loss are used accordingly, and confidence loss is used to monitor the object score and to identify whether there is an object.
-\end{itemize}
-
-The paper did not propose a new detection method but focused on combining existing detection methods to achieve an efficient detector. Since many techniques cannot be directly applied to YOLOv3, they need to be adjusted according to its structure.
+\end{table}
 
 Table \ref{tbl:ablation study pp-yolo} shows the comparison of the mAP, parameters, FLOPs, infer time and FPS produced by different tricks. The results indicate that by using different combinations, PP-YOLO can achieve performance improvements.
 
@@ -307,114 +302,34 @@ Inspired by their ideas, we can use a large number of knowledge reserves of the 
 
 ResNet is the abbreviation of Residual Network proposed by He et al. (2016) \cite{he2016deep}. ResNet solved the problems of gradient dispersion and accuracy drop in the deep network so that the network can get deeper and deeper, which not only ensures the accuracy but also controls the speed. ResNet first performs a convolution operation on the input, and then contains four residual blocks and finally performs a fully connected operation to facilitate classification tasks. The network composition diagram is presented in Table \ref{tbl:ResNet}.
 
-\begin{table*}[htbp]
+
+\begin{table}[htbp]
 \centering
 \caption{Structure of ResNet (Source: \cite{he2016deep}).}
 \begin{tabular}{c|c|c|c|c|c}
 \hline
 \textbf{layer name}                & \textbf{output size}    & \textbf{18-layer} & \textbf{34-layer} & \textbf{50-layer} & \textbf{101-layer}  \\ \hline
 \textbf{conv1}                     & 112$\times$112               & \multicolumn{4}{c}{7$\times$7, 64, stride 2}                                                              \\ \hline
-\multirow{2}{*}{\textbf{conv2\_x}} & \multirow{2}{*}{56$\times$56} & \multicolumn{4}{c}{3$\times$3 max pool, stride 2}                                                         \\ \cline{3-6}  &   &
-$\begin{bmatrix}  
-  3\times3, 64 \\  
-  3\times3, 64 \\    
-\end{bmatrix}\times2$
-&
-$\begin{bmatrix}  
-  3\times3, 64 \\  
-  3\times3, 64 \\    
-\end{bmatrix}\times3$
-& 
-$\begin{bmatrix}  
-  1\times1, 64 \\  
-  3\times3, 64 \\
-  1\times1, 256 \\      
-\end{bmatrix}\times3$ 
-& 
-$\begin{bmatrix}  
-  1\times1, 64 \\  
-  3\times3, 64 \\
-  1\times1, 256 \\    
+\multirow{2}{*}{\textbf{conv2\_x}} & \multirow{2}{*}{56$\times$56} & \multicolumn{4}{c}{3$\times$3 max pool, stride 2}                                                         \\ \cline{3-6}  &   &$\begin{bmatrix} 3\times3, 64 \\  3\times3, 64 \\  \end{bmatrix}\times2$&
+$\begin{bmatrix}  3\times3, 64 \\  3\times3, 64 \\  \end{bmatrix}\times3$& $\begin{bmatrix}1\times1, 64 \\  3\times3, 64 \\1\times1, 256 \\  \end{bmatrix}\times3$ 
+& $\begin{bmatrix}  1\times1, 64 \\  3\times3, 64 \\1\times1, 256 \\    
 \end{bmatrix}\times3$                               \\ \hline
-\textbf{conv3\_x}                  & 28$\times$28                  & $\begin{bmatrix}  
-  3\times3, 128 \\  
-  3\times3, 128 \\    
-\end{bmatrix}\times2$
-&
-$\begin{bmatrix}  
-  3\times3, 128 \\  
-  3\times3, 128 \\    
-\end{bmatrix}\times4$
-& 
-$\begin{bmatrix}  
-  1\times1, 128 \\  
-  3\times3, 128 \\
-  1\times1, 512 \\      
-\end{bmatrix}\times4$ 
-& 
-$\begin{bmatrix}  
-  1\times1, 128 \\  
-  3\times3, 128 \\
-  1\times1, 512 \\    
-\end{bmatrix}\times4$               
-                 \\ \hline
-\textbf{conv4\_x}                  & 14$\times$14                  & $\begin{bmatrix}  
-  3\times3, 256 \\  
-  3\times3, 256 \\    
-\end{bmatrix}\times2$
-&
-$\begin{bmatrix}  
-  3\times3, 256 \\  
-  3\times3, 256 \\    
-\end{bmatrix}\times6$
-& 
-$\begin{bmatrix}  
-  1\times1, 256 \\  
-  3\times3, 256 \\
-1\times1, 1024\end{bmatrix}\times6$ 
-& 
-$\begin{bmatrix}  
-  1\times1, 256 \\  
-  3\times3, 256 \\
-  1\times1, 1024 \\    
-\end{bmatrix}\times23$                             \\ \hline
-\textbf{conv5\_x}                  & 7$\times$7                    & $\begin{bmatrix}  
-  3\times3, 512 \\  
-  3\times3, 512 \\    
-\end{bmatrix}\times2$
-&
-$\begin{bmatrix}  
-  3\times3, 512 \\  
-  3\times3, 512 \\    
+\textbf{conv3\_x}  & 28$\times$28 & $\begin{bmatrix}  3\times3, 128 \\  3\times3, 128 \\ \end{bmatrix}\times2$&$\begin{bmatrix}  3\times3, 128 \\  3\times3, 128 \\  \end{bmatrix}\times4$& $\begin{bmatrix}  1\times1, 128 \\  3\times3, 128 \\1\times1, 512 \\      \end{bmatrix}\times4$ & $\begin{bmatrix}  1\times1, 128 \\  3\times3, 128 \\1\times1, 512 \\    
+\end{bmatrix}\times4$ \\ \hline\textbf{conv4\_x}    & 14$\times$14       & $\begin{bmatrix} 3\times3, 256 \\  3\times3, 256 \\    \end{bmatrix}\times2$
+&$\begin{bmatrix}  3\times3, 256 \\  3\times3, 256 \\    \end{bmatrix}\times6$
+& $\begin{bmatrix}  1\times1, 256 \\  3\times3, 256 \\1\times1, 1024\end{bmatrix}\times6$ 
+& $\begin{bmatrix}  1\times1, 256 \\  3\times3, 256 \\1\times1, 1024 \\    
+\end{bmatrix}\times23$      \\ \hline
+\textbf{conv5\_x}     & 7$\times$7   & $\begin{bmatrix}  3\times3, 512 \\  3\times3, 512 \\    
+\end{bmatrix}\times2$&$\begin{bmatrix}  3\times3, 512 \\  3\times3, 512 \\    
 \end{bmatrix}\times3$
-& 
-$\begin{bmatrix}  
-  1\times1, 512 \\  
-  3\times3, 512 \\
-  1\times1, 2048 \\      
-\end{bmatrix}  
-\times 3$ 
-& 
-$\begin{bmatrix}  
-  1\times1, 512 \\  
-  3\times3, 512 \\
-  1\times1, 2048 \\    
-\end{bmatrix}  
-\times 3$               
-                \\ \hline
-\textbf{}                          & 1$\times$1                   & \multicolumn{4}{c}{average pool, 1000-d fc, softmax}                                               \\ \hline
-\multicolumn{2}{c|}{\textbf{FLOPs}}  & $1.8\times10^{9}$ & $3.6\times10^{9}$ & $3.8\times10^{9}$ & $7.6\times10^{9}$  \\ \hline
+& $\begin{bmatrix}  1\times1, 512 \\  3\times3, 512 \\1\times1, 2048 \\      
+\end{bmatrix}\times3$ & $\begin{bmatrix}  1\times1, 512 \\  3\times3, 512 \\1\times1, 2048 \\    
+\end{bmatrix}\times3$   \\ \hline
+\textbf{}    & 1$\times$1   & \multicolumn{4}{c}{average pool, 1000-d fc, softmax}                                             \\ \hline\multicolumn{2}{c|}{\textbf{FLOPs}}  & $1.8\times10^{9}$ & $3.6\times10^{9}$ &$3.8\times10^{9}$ & $7.6\times10^{9}$  \\ \hline
 \end{tabular}
 \label{tbl:ResNet}
-\end{table*}
-
-%\begin{figure}[htbp]
-%\centering
-%\includegraphics[width=0.98\columnwidth]{images/ResNet50.png}
-%\caption{Structure of ResNet (Source: \cite{he2016deep}).}
-%\label{fig:ResNet}
-%\end{figure}
-
+\end{table}
 
 From the column named 50-layer, ResNet50 has four large blocks, each containing 3, 4, 6, and 3 small blocks. There are three convolutions in each small block. In addition, the network has two layers at the beginning and the end, a single convolutional layer and a fully connected layer. Therefore, a total of 50 layers ((3 + 4 + 6 + 3) * 3 + 1 + 1 = 50) are included in ResNet50.
 
@@ -428,7 +343,7 @@ Mobile Network (MobileNet) is a lightweight visual architecture suitable for emb
 The structure of MobileNetV2 is based on inverted residual, which is essentially a residual network. The traditional residual block has a large number of channels at both ends of the block and a small number in the middle, while the inverted residual is that the number of channels at both ends of the block is small, and there are many channels in the block.
 
 
-\begin{table*}[htbp]
+\begin{table}[htbp]
 \centering
 \caption{Structure of MobileNetV2 (Source: \cite{sandler2018mobilenetv2}).}
 \begin{tabular}{llllll} 
@@ -449,7 +364,7 @@ $7^2$ $\times$ 1280& avgpool 7 $\times$ 7& - & - & 1& 1\\
 \bottomrule
 \end{tabular}
 \label{tbl:MobileNetV2}
-\end{table*}
+\end{table}
 
 
 
@@ -470,14 +385,14 @@ backbone replacement, data augmentation can be applied to the PP-YOLO, which may
 
 \section{System Design}
 
-\begin{figure*}[htbp]
+\begin{figure}[htbp]
 \centering
-\includegraphics[width=1\columnwidth]{images/design.png}
+\includegraphics[width=0.8\textwidth]{images/design.png}
 \caption{System design diagram.}
 \label{fig:system architecture}
-\end{figure*}
+\end{figure}
 
-As can be vividly seen from Figure \ref{fig:system architecture}, the system design mainly includes two parts, one is the deployment and data processing of the USV, and the other is the implementation of the PP-YOLO and  PP-YOLO-mobile model. The stereo camera and the developer kit are used to obtain the video data for custom dataset labeling and real-time obstacle detection. The USV dataset is composed of the custom dataset and the Singapore Maritime Dataset (SMD). Both the PP-YOLO model and the PP-YOLO-mobile model are constructed through training, evaluating, predicting and exporting. The completed model is then pruned to reduce the size and deployed on a developer kit for identifying the obstacles from the video stream. Location and category of the obstacle will be predicted and sent to the control system for obstacle avoidance.
+As can be vividly seen from Figure \ref{fig:system architecture}, the system design mainly includes two parts, one is the deployment and data processing of the USV, and the other is the implementation of the PP-YOLO model and  PP-YOLO-mobile model. The stereo camera and the developer kit are used to obtain the video data for custom dataset labeling and real-time obstacle detection. The USV dataset is composed of the custom dataset and the Singapore Maritime Dataset (SMD). Both the PP-YOLO model and the PP-YOLO-mobile model are constructed through training, evaluating, predicting and exporting. The completed model is then pruned to reduce the size and deployed on a developer kit for identifying the obstacles from the video stream. Location and category of the obstacle are predicted and sent to the control system for obstacle avoidance.
 
 
 \subsection{USV Construction}
@@ -492,7 +407,7 @@ The architecture of the USV is shown in Figure \ref{fig:Architecture of USVs}. T
 
 A stereo camera and developer kit are installed in the cabin for detecting and recognizing the obstacles. When an obstacle is found from the signal of the stereo camera, the deployed model will calculate the location by drawing a bounding box and identify the category of this obstacle. After that, it can send instructions to control the heading and speed of the USV so that it can avoid the obstacle.
 
-Sensors for water quality measurement are deployed under the hull to collect the water quality data at regular intervals. The data can be transmitted to the back-end server through the 4G-based Data Transmission Unit (DTU). Application Programming Interface (API) deployed on the server receives the request and saves the water quality data in the database after processing. Users can view water quality data and analysis reports on the web browser or the mobile app.
+Sensors for water quality measurement are deployed under the hull to collect the water quality data at regular intervals. The data can be transmitted to the back-end server through the 4G-based Data Transmission Unit (DTU). Application Programming Interface (API) deployed on the server receives the request and saves the water quality data in the database after processing. Users can view water quality data and analysis reports on the web browser or the mobile application.
 
 
 
@@ -509,7 +424,7 @@ According to the instruction provided by Long et al. (2020) \cite{long2020pp}, c
 \begin{enumerate}
 \item Training PP-YOLO model after configuring some parameters.
 \item Saving and evaluating the model on the validation set.
-\item Inferring on the test set and outputting the location and category of the target.
+\item Inferring on the testing set and outputting the location and category of the target.
 \item Exporting the best model and using PaddlePaddle prediction library for predicting.
 \end{enumerate}
 
@@ -551,29 +466,29 @@ The data augmentation operation is used to increase the diversity of dataset dur
 
 
 \begin{itemize}
-\item{MixupImage}
+\item{Mixup}
 
-Mixup is a data augmentation principle that has nothing to do with data. It uses linear interpolation to construct new training samples and labels. This linear model reduces inadaptability when predicting data other than training samples.
+Mixup is a technique similar to regularization, which interpolates data in a high-dimensional space, increases the size of the pseudo-data set, and reduces the overfitting of the model to a certain extent. 
 \end{itemize}
 
 
 \begin{itemize}
-\item{RandomDistort}
+\item{Random Distort}
 
-RandomDistort performs random pixel content transformation on the image with a certain probability, including brightness, contrast, saturation and hue.
+Random distort performs random pixel content transformation on the image with a certain probability, including brightness, contrast, saturation and hue.
 
 \end{itemize}
 
 \begin{itemize}
-\item{RandomExpand}
+\item{Random Expand}
 
-RandomExpand randomly selects the expansion ratio to expand the image. Firstly, it calculates the image size after expansion. Then, it initialises the pixel value of the image with the input fill value and pastes the original image on the image randomly. Finally, according to the original image pasting position, it converts the position coordinates of the real label frame after expansion.
+Random expand randomly selects the expansion ratio to expand the image. Firstly, it calculates the image size after expansion. Then, it initializes the pixel value of the image with the input fill value and pastes the original image on the image randomly. Finally, according to the original image pasting position, it converts the position coordinates of the real label frame after expansion.
 
 \end{itemize}
 
 
 \begin{itemize}
-\item{RandomCrop}
+\item{Random Crop}
 
  It randomly crops the image through the following steps. Firstly, it calculates the height and width of a random crop. Then it randomly selects the starting point of the crop according to the height and width of the random crop. After the final cropping is completed, it adjusts the image to a uniform size.
 
@@ -583,13 +498,13 @@ RandomExpand randomly selects the expansion ratio to expand the image. Firstly, 
 \begin{itemize}
 \item{Resize}
 
-This step adjusts the image to a uniform length and width of 608 pixels.
+This step adjusts the image to a uniform length and width of 608 pixels to meet the requirements of model input size.
 
 \end{itemize}
 
 
 \begin{itemize}
-\item{RandomHorizontalFlip}
+\item{Random Horizontal Flip}
 
 This method randomly flips the image horizontally with a certain probability.
 
@@ -599,9 +514,9 @@ This method randomly flips the image horizontally with a certain probability.
 
 \subsection{Ablation Study}
 Although both backbone replacement and data augmentation may improve the model, the experiment did not prove that the two methods are meaningful, respectively. Meyes et al. (2019) proposed that an ablation study typically refers to removing some features of the model or algorithm, and seeing how that affects performance \cite{meyes2019ablation}.
-Inspired by his idea, we propose a plan that changed multiple methods at the same time by controlling the method one by one to see which method have a more significant impact on the results. Table \ref{tbl:design of ablation study for PP-YOLO} shows the design of the ablation study.
+Inspired by his idea, we changed multiple methods at the same time by controlling the method one by one to find which method have a more significant impact on the results. Table \ref{tbl:design of ablation study for PP-YOLO} shows the design of the ablation study.
 
-\begin{table*}[htbp]
+\begin{table}[htbp]
 \centering
 \caption{Design of ablation study for PP-YOLO}
 \begin{tabular}{ll} 
@@ -616,7 +531,7 @@ D& PP-YOLO + MobileNetV2 + Data Augmentation\\
 \bottomrule
 \end{tabular}
 \label{tbl:design of ablation study for PP-YOLO}
-\end{table*}
+\end{table}
 
 
 \begin{itemize}
@@ -641,17 +556,17 @@ D& PP-YOLO + MobileNetV2 + Data Augmentation\\
 \subsection{Data Collection}
 
 \subsubsection{Singapore Maritime Dataset}
-The Singapore Maritime Dataset (SMD) is a set of videos of the sea surface from Singapore captured by Dilip K. Prasad and volunteers using a Canon 70D camera \cite{prasad2017video}. All the videos are acquired in high definition (1080 x 1920 pixels) and are divided into three types, on-shore videos, on-board videos and Near Infra Red (NIR) videos. From the contents of the videos, they cover not only different time periods, such as before sunrise, sunrise, noon, afternoon, evening, and after sunset, but also include different weather conditions, like sunny, haze, and rain. Totally, there are 81 videos with nine different categories and 240,842 object labels in this dataset. Figure \ref{fig:Simple images of the SMD} displays simple images of the dataset and Table \ref{tbl:Properties of Singapore Maritime Dataset} summarizes the properties of each type of video in the dataset.
+The Singapore Maritime Dataset (SMD) is a set of videos of the sea surface from Singapore captured by Dilip K. Prasad and volunteers using a Canon 70D camera \cite{prasad2017video}. All the videos are acquired in high definition (1080 $\times$ 1920 pixels) and are divided into three types, on-shore videos, on-board videos and Near Infra Red (NIR) videos. From the contents of the videos, they cover not only different time periods, such as before sunrise, sunrise, noon, afternoon, evening, and after sunset, but also include different weather conditions, like sunny, haze, and rain. Totally, there are 81 videos with nine different categories and 240,842 object labels in this dataset. Figure \ref{fig:Simple images of the SMD} displays simple images of the dataset and Table \ref{tbl:Properties of Singapore Maritime Dataset} summarizes the properties of each type of video in the dataset.
 
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.9\columnwidth]{images/SMD-example.png}
+\includegraphics[width=1\columnwidth]{images/SMD-example.png}
 \caption{Simple images of the SMD.}
 \label{fig:Simple images of the SMD}
 \end{figure}
 
-\begin{table*}[htbp]
+\begin{table}[htbp]
 \centering
 \caption{Properties of the Singapore Maritime Dataset.}
 \begin{tabular}{llllll} 
@@ -666,7 +581,7 @@ Total& 5.28 G&  81 &63 & 31,653 &240,842\\
 \bottomrule
 \end{tabular}
 \label{tbl:Properties of Singapore Maritime Dataset}
-\end{table*}
+\end{table}
 
 
 \subsubsection{Custom Dataset}
@@ -677,7 +592,7 @@ The custom dataset consists of two parts, one is the video data collected by a c
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.9\columnwidth]{images/custom-dataset-example.png}
+\includegraphics[width=1\columnwidth]{images/custom-dataset-example.png}
 \caption{Simple images of the custom dataset.}
 \label{fig:Simple images of the custom dataset}
 \end{figure}
@@ -688,7 +603,7 @@ After the custom dataset is all marked, it is merged with the SMD to form the US
 
 In order to perform training, the dataset is divided into a training set, validation set and testing set according to the ratio of 7 : 2 : 1. The number of various categories in different sets is described in Table \ref{tbl:USV dataset for obstacle detection}.
 
-\begin{table*}[htbp]
+\begin{table}[htbp]
 \centering
 \caption{USV dataset for obstacle detection}
 \begin{tabular}{llllll} 
@@ -717,7 +632,7 @@ Total& 8,750& 6,125& 1,750& 875 \\
 \bottomrule
 \end{tabular}
 \label{tbl:USV dataset for obstacle detection}
-\end{table*}
+\end{table}
 
 
 
@@ -741,7 +656,7 @@ After those processes, the complete USV dataset is finished. When the model star
 
 Table \ref{tbl:Hardware} shows the hardware environment for the model training, including 4-core CPU, 32G memory, 100G hard disk. A Tesla V100 graphics card is equipped in the server with a memory of 16GB. Furthermore, the operating system of this server is Ubuntu 18.04.
 
-\begin{table*}[htbp]
+\begin{table}[htbp]
 \centering
 \caption{Hardware environment of the training server}
 \begin{tabular}{ll} 
@@ -757,7 +672,7 @@ Operating System& Ubuntu 18.04\\
 \bottomrule
 \end{tabular}
 \label{tbl:Hardware}
-\end{table*}
+\end{table}
 
 The above configuration has met the requirements of model training. Besides, all models are trained in the above configuration to ensure the consistency of the experimental environment.
 
@@ -803,14 +718,9 @@ Table \ref{tbl:Parameter} shows the parameter configuration of the PP-YOLO model
 \label{tbl:Parameter}
 \end{table*}
 
-\subsubsection{Transfer Learning}
+\subsubsection{Model Training}
 
-In traditional deep learning, enough data will be provided for different tasks to train different models. However, if a task lacks enough data to train a new model, the performance of the model will not be efficient. As the category of the custom dataset overlaps with the COCO dataset, most of the features in the new task can be learned by the pre-trained model in the old task. Then the weights trained on the COCO data set by PP-YOLO can be used for transfer learning in this experiment with a small amount of data. The premise of transfer learning is that the weight of the model can be borrowed from a model pre-trained on a similar task, and then fine-tuned on a specific task.
-
-PaddleX has provided a PP-YOLO object detection model, which can be used to train a model by configuring some training parameters.
-
-
-
+ As the category of the custom dataset overlaps with the COCO dataset, most of the features in the new task can be learned by the pre-trained model in the old task. Then the weights trained on the COCO data set by PP-YOLO can be used for transfer learning in this experiment with a small amount of data. The premise of transfer learning is that the weight of the model can be borrowed from a model pre-trained on a similar task, and then fine-tuned on a specific task. PaddleX has provided a PP-YOLO object detection model, which can be used to train a model by configuring some training parameters.
 
 \begin{itemize}
 \item{$num\_epochs$}
@@ -854,27 +764,18 @@ When deploying the model on the server, we need to export the model saved above 
 Model pruning can better meet the performance requirements in deployment scenarios on the embedded devices. It can effectively reduce the amount of calculation and the size of the model, thereby speeding up prediction performance.
 
 \subsubsection{Model Deployment}
-NVIDIA Jetson Nano developer kit is an embedded board which is also a small, low-power AI computer. Jetson Nano supports high-resolution sensors and can process multiple sensors in parallel. It also supports many common artificial intelligence frameworks, allowing developers to integrate their favourite models and frameworks into products easily.
-The following Figure \ref{fig:NVIDIA Jetson Nano developer kit} shows the appearance of the NVIDIA Jetson Nano developer kit.
-
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=0.5\columnwidth]{images/Jetson-nano.png}
-\caption{NVIDIA Jetson Nano developer kit.}
-\label{fig:NVIDIA Jetson Nano developer kit}
-\end{figure}
+NVIDIA Jetson Nano developer kit is an embedded board which is also a small, low-power AI computer. Jetson Nano supports high-resolution sensors and can process multiple sensors in parallel. It also supports many common artificial intelligence frameworks, allowing developers to integrate their favorite models and frameworks into products easily.
 
 Some software needs to be installed before deploying the model on Nvidia Jetson, such as CUDA, Cmake and Nvidia Jetpack. PaddlePaddle has provided Nvidia Jetson with a C++ prediction library, which can realize the prediction and visualization of pictures and videos.
 
 
 \section{Results and Discussion}
-This chapter states the results of the experiments and analysis of the data in response to whether the PP-YOLO-mobile model can improve the performance of the detection compared with the PP-YOLO mobile. Accuracy and speed are two aspects evaluated in this experiment, which are displayed in the form of tables and figures. In the end, it also discusses the conclusions drawn from the experiment.
 
 \subsection{Comparison of Accuracy}
 
 \subsubsection{Precision and Recall}
 
-The precision and recall analysis is an evaluation method for detecting objects. Precision refers to the percentage of objects that are correctly identified from the total extraction results. A high-precision value means that the detection result contains a high percentage of useful information (True Positive, TP) and a low percentage of false alarms (False Positive, FP). The calculation formula of precision is:
+The precision and recall analysis is an evaluation method for detecting objects. Precision refers to the percentage of objects that are correctly identified from the total extraction results. A high precision value means that the detection result contains a high percentage of useful information (True Positive, TP) and a low percentage of false alarms (False Positive, FP). The calculation formula of precision is:
 
 
 \begin{equation} 
@@ -887,10 +788,10 @@ The term recall refers to how many the true positives in images are detected. A 
 Recall = \frac{\text{TP}}{\text{TP + FN} } = \frac{\text{TP}}{\text{all\ ground-truth} } 
 \end{equation}
 
-\begin{table*}[htbp]
+\begin{table}[htbp]
 \centering
 \caption{Precision and recall of the validation set (IoU = 0.5)}
-\begin{tabular}{llllll} 
+\begin{tabular}{lccccc} 
 \toprule
 
 \multicolumn{1}{c}{\multirow{2}{*}{\textbf{Category}}} & \multicolumn{2}{c}{\textbf{Precision}}       & \multicolumn{2}{c}{\textbf{Recall}} \\
@@ -919,7 +820,7 @@ speed-boat& 0.9667& 0.9596& 0.9528& 0.9754 \\
 \bottomrule
 \end{tabular}
 \label{tbl:precision}
-\end{table*}
+\end{table}
 
 Table \ref{tbl:precision} displays the comparison of precision and recall of the PP-YOLO model and the PP-YOLO-mobile model on the validation set. Although the two models are comparable in the different categories of precision, PP-YOLO-mobile model has clearly achieved advantages in recall, which is greater than or equal to the recall value of the PP-YOLO model.
 
@@ -927,18 +828,18 @@ Table \ref{tbl:precision} displays the comparison of precision and recall of the
 \subsubsection{Precision-Recall Curve}
 Precision-Recall Curve (PRC) consists of precision, recall and the relationship between them. Compared with a single precision or recall metric, it is a more objective and overall judgment standard in the field of object detection. 
 
-The PRC is made by checking the precision and recall for the detection algorithm at different confidence score thresholds. The confidence score used is the score returned from the detection algorithms along with the bounding box, i.e., how confident the algorithm is in the bounding box. If the confidence score threshold is low, the detection algorithm will likely detect more objects of interest, but also identify more false positives. This means that for a low confidence score threshold, the recall will be high, and the precision will be low.
+The PRC is made by checking the precision and recall for the detection algorithm at different confidence score thresholds. The confidence score used is the score returned from the detection algorithms along with the bounding box. If the confidence score threshold is low, the detection algorithm will likely detect more objects of interest, but also identify more false positives. This means that for a low confidence score threshold, the recall will be high, and the precision will be low.
 
-As is visualized in Figure \ref{fig:prc}, we can find that when it gets close to the right, the recall value keeps increasing, but the precision is decreasing. For a good prediction, as the recall increases, the decline of precision should be small, that is, the area under the PR curve should be large. In other words, if the curve moves to the upper right corner, the overall performance of the model is better. In practice, AP can be understood as calculating the area under the curve to evaluate the performance of the classifier. The greater the precision and recall values, the higher the accuracy on the validation set.
+As is visualized in Figure \ref{fig:prc}, we can find that when it gets close to the right, the recall value keeps increasing, but the precision is decreasing. For a good prediction, as the recall increases, the decline of precision should be small, that is, the area under the PRC should be large. In other words, if the curve moves to the upper right corner, the overall performance of the model is better. In practice, AP can be understood as calculating the area under the curve to evaluate the performance of the classifier. The greater the precision and recall values, the higher the accuracy on the validation set.
 
 \begin{figure}[htbp]
 \centering
 \subfigure[PRC for PP-YOLO model (IoU = 0.5)]{
-\includegraphics[width=0.45\columnwidth]{images/pr-curve.png}
+\includegraphics[width=0.46\columnwidth]{images/pr-curve.png}
 }
 \quad
 \subfigure[PRC for PP-YOLO-mobile model (IoU = 0.5)]{
-\includegraphics[width=0.45\columnwidth]{images/pr-curve-1.png}
+\includegraphics[width=0.46\columnwidth]{images/pr-curve-1.png}
 }
 \caption{Comparison of ground truth and prediction in the validation set.}
 \label{fig:prc}
@@ -949,12 +850,12 @@ The curve closest to the lower-left corner, that is, the categories with the sma
 From the point of view of AP value, the grass rises from 49.87 to 72.73, the leaf rises from 52.33 to 59.11, and the branch rises from 63.82 to 67.80. Some other categories, like the bottle, flying-bird, plastic-bag, etc., have a slight increase in AP value from the PP-YOLO-mobile model. This result proves that accuracy can be improved by the PP-YOLO-mobile model.
 
 
-At this time, a question is raised, why some categories have low AP values, and some have high AP values. Through the classification and analysis of the categories, Table \ref{tbl:Comparison of AP in different dataset} from the original dataset is presented. Categories with high AP value are mostly from the SMD, while the categories with low AP value are from the Custom Dataset. In the SMD, the target comes from the marine, mainly some fixed-shaped objects which are easy to detect after training. However, the custom dataset contains some objects on the river surface, such as grass, leaves, and branches. They tend to gather together, and their shapes are not fixed, which brings great difficulty to object detection.
+At this time, a question is raised, why some categories have low AP values, and some have high AP values. Through the classification and analysis of the categories, Table \ref{tbl:Comparison of AP in different dataset} from the original dataset is presented. Categories with high AP value are mostly from the SMD, while the categories with low AP value are from the custom dataset. In the SMD, the target comes from the marine, mainly some fixed-shaped objects which are easy to detect after training. However, the custom dataset contains some objects on the river surface, such as grass, leaves, and branches. They tend to gather together, and their shapes are not fixed, which brings great difficulty to object detection.
 
-\begin{table*}[htbp]
+\begin{table}[htbp]
 \centering
 \caption{Comparison of AP in different dataset}
-\begin{tabular}{llll} 
+\begin{tabular}{llcc} 
 \toprule
 
 \multicolumn{1}{c}{\multirow{2}{*}{\textbf{Dataset}}} &
@@ -988,16 +889,10 @@ At this time, a question is raised, why some categories have low AP values, and 
 \bottomrule
 \end{tabular}
 \label{tbl:Comparison of AP in different dataset}
-\end{table*}
+\end{table}
 
 \subsubsection{Confusion Matrix}
 A confusion matrix is another way of presenting the performance of a classification algorithm. The confusion matrix gives a more intuitive representation of the results and gives a good indication of how well the detection algorithm would work in a real scenario. In this experiment, the goal is to identify different obstacles.
-
-In this section two figures are presented, Figure \ref{fig:confusion matrix} (a) for the PP-YOLO model, and Figure \ref{fig:confusion matrix} (b) for the PP-YOLO-mobile model. In the figure, the abscissa is the predicted label, and the ordinate is the true label. The value inside shows the relationship between the predicted value and the true value. Most of the values are on the diagonal line, that is, the predicted result is consistent with the real result. However, some of the predicted and true values are not equal, which indicates that they have a similar relationship between them.
-
-For example, in Figure \ref{fig:confusion matrix} (a), four objects that are actually plastic-bag are predicted to bottle, six objects that are actually ship are predicted to other, and seven objects that are actually speed-boat are predicted to ship.
-
-In Figure \ref{fig:confusion matrix} (b), the confusion of categories has been improved. Only two objects that are actually plastic-bag are predicted to bottle, five objects that are actually ship are predicted to other, and two objects that are actually speed-boat are predicted to ship. Above all, it can be seen that the PP-YOLO-mobile model reduces the probability of model recognition errors and improves the accuracy of recognition.
 
 \begin{figure}[htbp]
 \centering
@@ -1012,23 +907,26 @@ In Figure \ref{fig:confusion matrix} (b), the confusion of categories has been i
 \label{fig:confusion matrix}
 \end{figure}
 
+In this section two figures are presented, Figure \ref{fig:confusion matrix} (a) for the PP-YOLO model, and Figure \ref{fig:confusion matrix} (b) for the PP-YOLO-mobile model. In the two figures, the abscissa is the predicted label, and the ordinate is the true label. The value inside shows the relationship between the predicted value and the true value. Most of the values are on the diagonal line, that is, the predicted result is consistent with the real result. However, some of the predicted and true values are not equal, which indicates that they have a similar relationship between them.
+
+For example, in Figure \ref{fig:confusion matrix} (a), four objects that are actually plastic-bag are predicted to bottle, six objects that are actually ship are predicted to other, and seven objects that are actually speed-boat are predicted to ship. In Figure \ref{fig:confusion matrix} (b), the confusion of categories has been improved. Only two objects that are actually plastic-bag are predicted to bottle, five objects that are actually ship are predicted to other, and two objects that are actually speed-boat are predicted to ship. Above all, it can be seen that the PP-YOLO-mobile model reduces the probability of model recognition errors and improves the accuracy of recognition.
+
+
+
 
 
 \subsubsection{Mean Average Precision}
-Average Precision (AP) is the average of the precision value on the precision-recall curve. For the precision-recall curve, the integral is used for calculation, and the formula is as follows:
+Average Precision (AP) is the average of the precision value on the PRC. The integral of PRC is used for calculating AP, and the formula is as follows:
 
 \begin{equation} 
 {AP} = {\int_{0}^{1}\text{p(r)dr}} 
 \end{equation}
 
-Mean Average Precision (mAP) is the average value of AP, that is, the average of the area under the accuracy-recall curve of each category. MAP is an indicator of the overall recognition accuracy in target detection Generally, the higher the mAP value, the better the performance of the model in all categories. The formula is as follows, where $Q$ is the number of categories.
+Mean Average Precision (mAP) is the average value of AP, that is, the average of the area under the PRC of each category. MAP is an indicator of the overall recognition accuracy in target detection Generally, the higher the mAP value, the better the performance of the model in all categories. The formula is as follows, where $Q$ is the number of categories.
 
 \begin{equation} 
 {mAP} = {\frac {\sum _{q=1}^{Q}\operatorname {AP(q)} }{Q}}
 \end{equation}
-
-
-As can be seen from Figure \ref{fig:map}, with the increase of epoch, the trend of the mAP of the two models is rising. For the PP-YOLO model, at the 230th epoch, the mAP reached its maximum value of 84.1947. For the PP-YOLO-mobile model, it achieved the best detection result at the 190th epoch, with a value of 86.9339. In the end, the PP-YOLO-mobile model is 2.7392\% higher in accuracy than the PP-YOLO model in this experiment.
 
 \begin{figure}[htbp]
 \centering
@@ -1043,6 +941,10 @@ As can be seen from Figure \ref{fig:map}, with the increase of epoch, the trend 
 \label{fig:map}
 \end{figure}
 
+As can be seen from Figure \ref{fig:map}, with the increase of epoch, the trend of the mAP of the two models is rising. For the PP-YOLO model, at the 230th epoch, the mAP reached its maximum value of 84.1947. For the PP-YOLO-mobile model, it achieved the best detection result at the 190th epoch, with a value of 86.9339. In the end, the PP-YOLO-mobile model is 2.7392\% higher in accuracy than the PP-YOLO model in this experiment.
+
+
+
 From the perspective of the degree of curve rise, the PP-YOLO model has reached 80 in mAP at the 50th epoch, while the PP-YOLO-mobile model needs 90 epochs to achieve this accuracy. This means that complex models have advantages in the number of training epochs, and only a small amount of training is required to achieve relatively high accuracy. After a certain number of training epochs, the mAP values of the PP-YOLO model and the PP-YOLO model both increase slowly or fluctuate slightly, and longer training steps are meaningless.
 
 
@@ -1055,7 +957,7 @@ Frames per second (FPS) is a way to express how fast the method is. It measures 
 {FPS} = \frac {\text{Number\ of\ Images}} {\text{Total\ Seconds}}
 \end{equation}
 
-\begin{table*}[htbp]
+\begin{table}[htbp]
 \centering
 \caption{Comparison of FPS in the validation dataset}
 \begin{tabular}{llll} 
@@ -1067,7 +969,7 @@ PP-YOLO-mobile model&40.058&43.687&23\\
 \bottomrule
 \end{tabular}
 \label{tbl:Comparison of FPS in the validation dataset}
-\end{table*}
+\end{table}
 
 There are 1750 images in the validation set. It takes 47.525 seconds for PP-YOLO model to complete the detection, and 40.058 seconds for the PP-YOLO-mobile model. The value of FPS is usually used to indicate the speed of model detection. Table \ref{tbl:Comparison of FPS in the validation dataset} shows the results of FPS after calculation.
 
@@ -1080,7 +982,7 @@ For the PP-YOLO-mobile model, it can detect 43.687 pictures per second, which is
 Sine the PP-YOLO-mobile can improve performance by replacing backbone and data enhancement at the same time. However, it is not sure that both of them contribute to the improvement of the model. It is also possible that only one of them can be used to improve performance. Therefore, an ablation study has also been carried out. The results are summarized in Table \ref{tbl:Results of ablation study}, and the histogram for visual comparison is shown in Figure \ref{fig:ablation-bar}.
 
 
-\begin{table*}[htbp]
+\begin{table}[htbp]
 \centering
 \caption{Results of ablation study}
 \begin{tabular}{llll} 
@@ -1095,25 +997,25 @@ D& PP-YOLO + MobileNetV2 + Data Augmentation & 86.9339& 43.687\\
 \bottomrule
 \end{tabular}
 \label{tbl:Results of ablation study}
-\end{table*}
+\end{table}
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.8\columnwidth]{images/ablation-bar.png}
+\includegraphics[width=1\columnwidth]{images/ablation-bar.png}
 \caption{Histogram of ablation study results.}
 \label{fig:ablation-bar}
 \end{figure}
 
-Group A and Group D are the PP-YOLO and PP-YOLO-mobile models analysed previously. Group B is a combination of PP-YOLO algorithm and MobileNetV2 backbone. Compared with the PP-YOLO model, the accuracy has dropped by 1.4885, but the speed has increased by 8.726. Group C has applied data augmentation based on Group A and achieved a precision increase of 3.3908, but FPS also decreased by 4.368.
+Group A and Group D are the PP-YOLO and PP-YOLO-mobile models analyzed previously. Group B is a combination of PP-YOLO algorithm and MobileNetV2 backbone. Compared with the PP-YOLO model, the accuracy has dropped by 1.4885, but the speed has increased by 8.726. Group C has applied data augmentation based on Group A and achieved a precision increase of 3.3908, but FPS also decreased by 4.368.
 
 Above all, Group C has the highest accuracy, and Group B has the fastest speed. Both MobileNetV2 backbone and data augmentation have their own effects, and one of them alone cannot bring about the improvement of overall performance.
 
 
 \subsection{Performance on Jetson Nano}
-Evaluation on the server with Tesla GPU has achieved a good result. In real applications, the performance of the hardware in the developer kit is limited, such as CPU, GPU and memory. Besides, since it is battery powered, the output voltage also affects the performance of the model. Table \ref{tbl:Performance on Jetson Nan} shows the results of experiments on Nvidia Jetson Nano.
+Evaluation on the server with Tesla GPU has achieved a good result. In real applications, the performance of the hardware in the developer kit is limited, such as CPU, GPU and memory. Besides, since it is battery powered, the output voltage also affects the performance of the model. Table \ref{tbl:performance on Jetson Nano} shows the results of experiments on Nvidia Jetson Nano.
 
 
-\begin{table*}[htbp]
+\begin{table}[htbp]
 \centering
 \caption{Performance on Jetson Nano}
 \begin{tabular}{lllll} 
@@ -1124,8 +1026,8 @@ PP-YOLO  & 219.2MB&33.5MB&83.4048&10.644\\
 PP-YOLO-mobile &173.4MB & 26.4MB&86.2752&16.527\\
 \bottomrule
 \end{tabular}
-\label{tbl:Performance on Jetson Nan}
-\end{table*}
+\label{tbl:performance on Jetson Nano}
+\end{table}
 
 
 After model pruning, the size of the model has been dramatically reduced, from 219.2MB to 33.5MB for the PP-YOLO model and 173.4MB to 26.4MB for the PP-YOLO-mobile model. At the same time, the accuracy of the model is only slightly reduced by 0.7899 and 0.6587. Compared with the PP-YOLO model, PP-YOLO-mobile model has increased by 5.883 in FPS, reaching a value of 16.527.
@@ -1135,9 +1037,48 @@ After model pruning, the size of the model has been dramatically reduced, from 2
 \subsection{Discussion}
 Above all, the performance is compared in a quantitative way for the PP-YOLO-mobile model and the original PP-YOLO model. According to the results, by replacing the ResNet50 backbone with the MobileNetV2 backbone, the speed of model recognition can be improved. Through data augmentation, the accuracy of model recognition can be increased. In detail, the ResNet50 backbone has a larger number of parameters and obviously shows better performance than MobileNetV2. After replacing with the MobileNetV2 backbone, the model becomes simpler, and the detection speed is improved. Furthermore, data augmentation enriches the diversity of training data, and more complex pictures are processed during model training, so that the speed of detection is improved.
 
-In some difficult obstacle recognition, such as in the recognition of leaves, grasses, branches, the accuracy of the PP-YOLO-mobile model recognition has been greatly improved. This means that data enhancement can indeed enrich training samples by adjusting brightness, contrast, cropping, etc., and enhance the ability to handle complex targets. The results of data augmentation are presented in Appendix \ref{chap:Data Augmentation}. 
+In some difficult obstacle recognition, such as in the recognition of leaves, grasses, branches, the accuracy of the PP-YOLO-mobile model recognition has been greatly improved. This means that data enhancement can indeed enrich training samples by adjusting brightness, contrast, cropping, etc., and enhance the ability to handle complex targets. The results of data augmentation are presented in Figure \ref{fig:data agumentation}. 
 
-To compare the detection effects of the two models vividly, we respectively selected two pictures in the test set from the SMD and custom dataset and drew the visualization pictures under the two models. The first row is the pictures with ground-true labels. The second and third lines are their visualization effects under the PP-YOLO model and PP-YOLO-mobile model. 
+\begin{figure}[htbp]
+\centering
+\subfigure[OriginalImage (1920 x 1080 pixels)]{
+\includegraphics[width=0.4\columnwidth]{images/data-augmentation-1.png}
+}
+\quad
+\subfigure[OriginalImageWithGTBox (1920 x 1080 pixels)]{
+\includegraphics[width=0.4\columnwidth]{images/data-augmentation-2.png}
+}
+\quad
+\subfigure[MixupImage (1920 x 1080 pixels)]{
+\includegraphics[width=0.4\columnwidth]{images/data-augmentation-3.png}
+}
+\quad
+\subfigure[RandomDistort (1920 x 1080 pixels)]{
+\includegraphics[width=0.4\columnwidth]{images/data-augmentation-4.png}
+}
+\quad
+\subfigure[RandomExpand (4669 x 2626 pixels)]{
+\includegraphics[width=0.4\columnwidth]{images/data-augmentation-5.png}
+}
+\quad
+\subfigure[OriginalCrop (4669 x 2626 pixels)]{
+\includegraphics[width=0.4\columnwidth]{images/data-augmentation-6.png}
+}
+\quad
+\subfigure[Resize (608 x 608 pixels)]{
+\includegraphics[width=0.24\columnwidth]{images/data-augmentation-7.png}
+}
+\quad
+\subfigure[RandomHorizontalFlip (608 x 608 pixels)]{
+\includegraphics[width=0.24\columnwidth]{images/data-augmentation-8.png}
+}
+\caption{Sample image after data augmentation. (a) is the original image of 1920 x 1080 pixels. (b) is the original image with ground-truth boxes which indicate obstacles from this image. (c), (d), (e), (f), (g) and (h) demonstrate the image results after each data augmentation method. Finally, images are unified into the size of 608 x 608 pixels.
+}
+\label{fig:data agumentation}
+\end{figure}
+
+
+To compare the detection effects of the two models vividly, we respectively selected two pictures in the test set from the SMD and custom dataset and drew the visualization pictures under the two models which are displayed in Figure \ref{Comparison of ground truth and prediction for two models in the testing set}. The first row is the pictures with ground-true labels. The second and third lines are their visualization effects under the PP-YOLO model and PP-YOLO-mobile model. 
 From the left column, the accuracy of different categories under the PP-YOLO-mobile model has been improved. Accuracy of the ship increased from 0.99 to 1.00, ferry increased from 0.96 to 0.99, and buoy increased from 0.97 to 0.99.
 Similarly, the accuracy in the second column has also been improved. The different bottles have been increased from 0.789 to 0.95, 0.75 to 0.90, and 0.94 to 0.96.
 
@@ -1166,6 +1107,7 @@ Similarly, the accuracy in the second column has also been improved. The differe
 \includegraphics[width=0.47\columnwidth]{images/detection-result-2-3.png}
 }
 \caption{Comparison of ground truth and prediction for two models in the testing set.}
+\label{Comparison of ground truth and prediction for two models in the testing set}
 \end{figure}
 
 \section{Conclusion}

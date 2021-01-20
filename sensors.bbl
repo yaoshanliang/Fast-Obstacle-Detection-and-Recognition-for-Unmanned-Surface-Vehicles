@@ -1,0 +1,282 @@
+\begin{thebibliography}{999}
+
+\bibitem[Yan \em{et~al.}(2010)Yan, Pang, Sun, and Pang]{yan2010development}
+Yan, R.j.; Pang, S.; Sun, H.b.; Pang, Y.j.
+\newblock Development and missions of unmanned surface vehicle.
+\newblock {\em Journal of Marine Science and Application} {\bf 2010}, {\em
+  9},~451--457.
+
+\bibitem[Naeem and Irwin(2011)]{naeem2011evasive}
+Naeem, W.; Irwin, G.W.
+\newblock Evasive decision making in uninhabited maritime vehicles.
+\newblock {\em IFAC Proceedings Volumes} {\bf 2011}, {\em 44},~12833--12838.
+
+\bibitem[Casalino \em{et~al.}(2009)Casalino, Turetta, and
+  Simetti]{casalino2009three}
+Casalino, G.; Turetta, A.; Simetti, E.
+\newblock A three-layered architecture for real time path planning and obstacle
+  avoidance for surveillance USVs operating in harbour fields.
+\newblock  Oceans 2009-Europe. IEEE,  2009, pp. 1--8.
+
+\bibitem[{Kristan} \em{et~al.}(2016){Kristan}, {Sulić Kenk}, {Kovačič}, and
+  {Perš}]{7073635}
+{Kristan}, M.; {Sulić Kenk}, V.; {Kovačič}, S.; {Perš}, J.
+\newblock Fast Image-Based Obstacle Detection From Unmanned Surface Vehicles.
+\newblock {\em IEEE Transactions on Cybernetics} {\bf 2016}, {\em
+  46},~641--654.
+
+\bibitem[{Rasmussen} \em{et~al.}(2010){Rasmussen}, {Lu}, and
+  {Kocamaz}]{5650189}
+{Rasmussen}, C.; {Lu}, Y.; {Kocamaz}, M.
+\newblock Trail following with omnidirectional vision.
+\newblock  2010 IEEE/RSJ International Conference on Intelligent Robots and
+  Systems,  2010, pp. 829--836.
+
+\bibitem[{Lu} and {Rasmussen}(2012)]{6386039}
+{Lu}, Y.; {Rasmussen}, C.
+\newblock Simplified markov random fields for efficient semantic labeling of 3D
+  point clouds.
+\newblock  2012 IEEE/RSJ International Conference on Intelligent Robots and
+  Systems,  2012, pp. 2690--2697.
+
+\bibitem[Li \em{et~al.}(2016)Li, Deng, Luo, Lin, Yan, and Ming]{li2016hybrid}
+Li, J.; Deng, G.; Luo, C.; Lin, Q.; Yan, Q.; Ming, Z.
+\newblock A hybrid path planning method in unmanned air/ground vehicle
+  (UAV/UGV) cooperative systems.
+\newblock {\em IEEE Transactions on Vehicular Technology} {\bf 2016}, {\em
+  65},~9585--9596.
+
+\bibitem[{Heidarsson} and {Sukhatme}(2011)]{5980509}
+{Heidarsson}, H.K.; {Sukhatme}, G.S.
+\newblock Obstacle detection and avoidance for an Autonomous Surface Vehicle
+  using a profiling sonar.
+\newblock  2011 IEEE International Conference on Robotics and Automation,
+  2011, pp. 731--736.
+
+\bibitem[Larson and Trivedi(2011)]{larson2011lidar}
+Larson, J.; Trivedi, M.
+\newblock Lidar based off-road negative obstacle detection and analysis.
+\newblock  2011 14th International IEEE Conference on Intelligent
+  Transportation Systems (ITSC). IEEE,  2011, pp. 192--197.
+
+\bibitem[{Almeida} \em{et~al.}(2009){Almeida}, {Franco}, {Ferreira}, {Martins},
+  {Santos}, {Almeida}, {Carvalho}, and {Silva}]{5278238}
+{Almeida}, C.; {Franco}, T.; {Ferreira}, H.; {Martins}, A.; {Santos}, R.;
+  {Almeida}, J.M.; {Carvalho}, J.; {Silva}, E.
+\newblock Radar based collision detection developments on USV ROAZ II.
+\newblock  OCEANS 2009-EUROPE,  2009, pp. 1--6.
+
+\bibitem[Gal and Zeitouni(2013)]{sauze_tracking_2013}
+Gal, O.; Zeitouni, E.
+\newblock Tracking {Objects} {Using} {PHD} {Filter} for {USV} {Autonomous}
+  {Capabilities}. In {\em Robotic {Sailing} 2012}; Sauzé, C.; Finnis, J.,
+  Eds.; Springer Berlin Heidelberg: Berlin, Heidelberg,  2013; pp. 3--12.
+\newblock
+  doi:{\changeurlcolor{black}\href{https://doi.org/10.1007/978-3-642-33084-1_1}{\detokenize{10.1007/978-3-642-33084-1_1}}}.
+
+\bibitem[{Fefilatyev} and {Goldgof}(2008)]{4761344}
+{Fefilatyev}, S.; {Goldgof}, D.
+\newblock Detection and tracking of marine vehicles in video.
+\newblock  2008 19th International Conference on Pattern Recognition,  2008,
+  pp. 1--4.
+
+\bibitem[{Wang} \em{et~al.}(2011){Wang}, {Wei}, {Wang}, {Ow}, {Ho}, and
+  {Feng}]{6070512}
+{Wang}, H.; {Wei}, Z.; {Wang}, S.; {Ow}, C.S.; {Ho}, K.T.; {Feng}, B.
+\newblock A vision-based obstacle detection system for Unmanned Surface
+  Vehicle.
+\newblock  2011 IEEE 5th International Conference on Robotics, Automation and
+  Mechatronics (RAM),  2011, pp. 364--369.
+
+\bibitem[{Rankin} and {Matthies}(2010)]{5650402}
+{Rankin}, A.; {Matthies}, L.
+\newblock Daytime water detection based on color variation.
+\newblock  2010 IEEE/RSJ International Conference on Intelligent Robots and
+  Systems,  2010, pp. 215--221.
+
+\bibitem[Scherer \em{et~al.}(2012)Scherer, Rehder, Achar, Cover, Chambers,
+  Nuske, and Singh]{scherer_river_2012}
+Scherer, S.; Rehder, J.; Achar, S.; Cover, H.; Chambers, A.; Nuske, S.; Singh,
+  S.
+\newblock River mapping from a flying robot: state estimation, river detection,
+  and obstacle mapping.
+\newblock {\em Autonomous Robots} {\bf 2012}, {\em 33},~189--214.
+\newblock
+  doi:{\changeurlcolor{black}\href{https://doi.org/10.1007/s10514-012-9293-0}{\detokenize{10.1007/s10514-012-9293-0}}}.
+
+\bibitem[Qin and Zhang(2018)]{qin2018robust}
+Qin, Y.; Zhang, X.
+\newblock Robust obstacle detection for unmanned surface vehicles.
+\newblock  MIPPR 2017: Remote Sensing Image Processing, Geographic Information
+  Systems, and Other Applications. International Society for Optics and
+  Photonics,  2018, Vol. 10611, p. 106111E.
+
+\bibitem[Mustafah \em{et~al.}(2012)Mustafah, Noor, Hasbi, and
+  Azma]{mustafah2012stereo}
+Mustafah, Y.M.; Noor, R.; Hasbi, H.; Azma, A.W.
+\newblock Stereo vision images processing for real-time object distance and
+  size measurements.
+\newblock  2012 international conference on computer and communication
+  engineering (ICCCE). IEEE,  2012, pp. 659--663.
+
+\bibitem[Zou \em{et~al.}(2019)Zou, Shi, Guo, and Ye]{zou2019object}
+Zou, Z.; Shi, Z.; Guo, Y.; Ye, J.
+\newblock Object detection in 20 years: A survey.
+\newblock {\em arXiv preprint arXiv:1905.05055} {\bf 2019}.
+
+\bibitem[Soviany and Ionescu(2018)]{soviany2018optimizing}
+Soviany, P.; Ionescu, R.T.
+\newblock Optimizing the trade-off between single-stage and two-stage deep
+  object detectors using image difficulty prediction.
+\newblock  2018 20th International Symposium on Symbolic and Numeric Algorithms
+  for Scientific Computing (SYNASC). IEEE,  2018, pp. 209--214.
+
+\bibitem[Duan \em{et~al.}(2020)Duan, Xie, Qi, Bai, Huang, and
+  Tian]{duan2020corner}
+Duan, K.; Xie, L.; Qi, H.; Bai, S.; Huang, Q.; Tian, Q.
+\newblock Corner proposal network for anchor-free, two-stage object detection.
+\newblock {\em arXiv preprint arXiv:2007.13816} {\bf 2020}.
+
+\bibitem[Kang \em{et~al.}(2017)Kang, Ji, Leng, and Lin]{kang2017contextual}
+Kang, M.; Ji, K.; Leng, X.; Lin, Z.
+\newblock Contextual region-based convolutional neural network with multilayer
+  fusion for SAR ship detection.
+\newblock {\em Remote Sensing} {\bf 2017}, {\em 9},~860.
+
+\bibitem[Wang \em{et~al.}(2018)Wang, Li, Duan, Cao, and Zhao]{wang2018study}
+Wang, R.; Li, J.; Duan, Y.; Cao, H.; Zhao, Y.
+\newblock Study on the combined application of CFAR and deep learning in ship
+  detection.
+\newblock {\em Journal of the Indian Society of Remote Sensing} {\bf 2018},
+  {\em 46},~1413--1421.
+
+\bibitem[Lin \em{et~al.}(2018)Lin, Ji, Leng, and Kuang]{lin2018squeeze}
+Lin, Z.; Ji, K.; Leng, X.; Kuang, G.
+\newblock Squeeze and excitation rank faster R-CNN for ship detection in SAR
+  images.
+\newblock {\em IEEE Geoscience and Remote Sensing Letters} {\bf 2018}, {\em
+  16},~751--755.
+
+\bibitem[Shao \em{et~al.}(2019)Shao, Wang, Wang, Du, and Wu]{shao2019saliency}
+Shao, Z.; Wang, L.; Wang, Z.; Du, W.; Wu, W.
+\newblock Saliency-aware convolution neural network for ship detection in
+  surveillance video.
+\newblock {\em IEEE Transactions on Circuits and Systems for Video Technology}
+  {\bf 2019}, {\em 30},~781--794.
+
+\bibitem[Redmon \em{et~al.}(2016)Redmon, Divvala, Girshick, and
+  Farhadi]{redmon2016you}
+Redmon, J.; Divvala, S.; Girshick, R.; Farhadi, A.
+\newblock You only look once: Unified, real-time object detection.
+\newblock  Proceedings of the IEEE conference on computer vision and pattern
+  recognition,  2016, pp. 779--788.
+
+\bibitem[Redmon and Farhadi(2017)]{redmon2017yolo9000}
+Redmon, J.; Farhadi, A.
+\newblock YOLO9000: better, faster, stronger.
+\newblock  Proceedings of the IEEE conference on computer vision and pattern
+  recognition,  2017, pp. 7263--7271.
+
+\bibitem[Redmon and Farhadi(2018)]{redmon2018yolov3}
+Redmon, J.; Farhadi, A.
+\newblock Yolov3: An incremental improvement.
+\newblock {\em arXiv preprint arXiv:1804.02767} {\bf 2018}.
+
+\bibitem[Bochkovskiy \em{et~al.}(2020)Bochkovskiy, Wang, and
+  Liao]{bochkovskiy2020yolov4}
+Bochkovskiy, A.; Wang, C.Y.; Liao, H.Y.M.
+\newblock YOLOv4: Optimal Speed and Accuracy of Object Detection.
+\newblock {\em arXiv preprint arXiv:2004.10934} {\bf 2020}.
+
+\bibitem[Long \em{et~al.}(2020)Long, Deng, Wang, Zhang, Dang, Gao, Shen, Ren,
+  Han, Ding, et~al.]{long2020pp}
+Long, X.; Deng, K.; Wang, G.; Zhang, Y.; Dang, Q.; Gao, Y.; Shen, H.; Ren, J.;
+  Han, S.; Ding, E.; others.
+\newblock PP-YOLO: An Effective and Efficient Implementation of Object
+  Detector.
+\newblock {\em arXiv preprint arXiv:2007.12099} {\bf 2020}.
+
+\bibitem[He \em{et~al.}(2016)He, Zhang, Ren, and Sun]{he2016deep}
+He, K.; Zhang, X.; Ren, S.; Sun, J.
+\newblock Deep residual learning for image recognition.
+\newblock  Proceedings of the IEEE conference on computer vision and pattern
+  recognition,  2016, pp. 770--778.
+
+\bibitem[Pan and Yang(2009)]{pan2009survey}
+Pan, S.J.; Yang, Q.
+\newblock A survey on transfer learning.
+\newblock {\em IEEE Transactions on knowledge and data engineering} {\bf 2009},
+  {\em 22},~1345--1359.
+
+\bibitem[Zhuang \em{et~al.}(2020)Zhuang, Qi, Duan, Xi, Zhu, Zhu, Xiong, and
+  He]{zhuang2020comprehensive}
+Zhuang, F.; Qi, Z.; Duan, K.; Xi, D.; Zhu, Y.; Zhu, H.; Xiong, H.; He, Q.
+\newblock A comprehensive survey on transfer learning.
+\newblock {\em Proceedings of the IEEE} {\bf 2020}.
+
+\bibitem[Sandler \em{et~al.}(2018)Sandler, Howard, Zhu, Zhmoginov, and
+  Chen]{sandler2018mobilenetv2}
+Sandler, M.; Howard, A.; Zhu, M.; Zhmoginov, A.; Chen, L.C.
+\newblock Mobilenetv2: Inverted residuals and linear bottlenecks.
+\newblock  Proceedings of the IEEE conference on computer vision and pattern
+  recognition,  2018, pp. 4510--4520.
+
+\bibitem[Frid-Adar \em{et~al.}(2018)Frid-Adar, Diamant, Klang, Amitai,
+  Goldberger, and Greenspan]{frid2018gan}
+Frid-Adar, M.; Diamant, I.; Klang, E.; Amitai, M.; Goldberger, J.; Greenspan,
+  H.
+\newblock GAN-based synthetic medical image augmentation for increased CNN
+  performance in liver lesion classification.
+\newblock {\em Neurocomputing} {\bf 2018}, {\em 321},~321--331.
+
+\bibitem[Cubuk \em{et~al.}(2018)Cubuk, Zoph, Mane, Vasudevan, and
+  Le]{cubuk2018autoaugment}
+Cubuk, E.D.; Zoph, B.; Mane, D.; Vasudevan, V.; Le, Q.V.
+\newblock Autoaugment: Learning augmentation policies from data.
+\newblock {\em arXiv preprint arXiv:1805.09501} {\bf 2018}.
+
+\bibitem[DeVries and Taylor(2017)]{devries2017improved}
+DeVries, T.; Taylor, G.W.
+\newblock Improved regularization of convolutional neural networks with cutout.
+\newblock {\em arXiv preprint arXiv:1708.04552} {\bf 2017}.
+
+\bibitem[Ma \em{et~al.}(2019)Ma, Yu, Wu, and Wang]{ma2019paddlepaddle}
+Ma, Y.; Yu, D.; Wu, T.; Wang, H.
+\newblock PaddlePaddle: An open-source deep learning platform from industrial
+  practice.
+\newblock {\em Frontiers of Data and Domputing} {\bf 2019}, {\em 1},~105--115.
+
+\bibitem[Zoph \em{et~al.}(2019)Zoph, Cubuk, Ghiasi, Lin, Shlens, and
+  Le]{zoph2019learning}
+Zoph, B.; Cubuk, E.D.; Ghiasi, G.; Lin, T.Y.; Shlens, J.; Le, Q.V.
+\newblock Learning data augmentation strategies for object detection.
+\newblock {\em arXiv preprint arXiv:1906.11172} {\bf 2019}.
+
+\bibitem[Mahto \em{et~al.}(2020)Mahto, Garg, Seth, and
+  Panda]{mahto2020refining}
+Mahto, P.; Garg, P.; Seth, P.; Panda, J.
+\newblock Refining Yolov4 for Vehicle Detection.
+\newblock {\em International Journal of Advanced Research in Engineering and
+  Technology (IJARET)} {\bf 2020}, {\em 11}.
+
+\bibitem[Mandal and Adu-Gyamfi(2020)]{mandal2020object}
+Mandal, V.; Adu-Gyamfi, Y.
+\newblock Object Detection and Tracking Algorithms for Vehicle Counting: A
+  Comparative Analysis.
+\newblock {\em arXiv preprint arXiv:2007.16198} {\bf 2020}.
+
+\bibitem[Meyes \em{et~al.}(2019)Meyes, Lu, de~Puiseau, and
+  Meisen]{meyes2019ablation}
+Meyes, R.; Lu, M.; de~Puiseau, C.W.; Meisen, T.
+\newblock Ablation studies in artificial neural networks.
+\newblock {\em arXiv preprint arXiv:1901.08644} {\bf 2019}.
+
+\bibitem[Prasad \em{et~al.}(2017)Prasad, Rajan, Rachmawati, Rajabally, and
+  Quek]{prasad2017video}
+Prasad, D.K.; Rajan, D.; Rachmawati, L.; Rajabally, E.; Quek, C.
+\newblock Video processing from electro-optical sensors for object detection
+  and tracking in a maritime environment: a survey.
+\newblock {\em IEEE Transactions on Intelligent Transportation Systems} {\bf
+  2017}, {\em 18},~1993--2016.
+
+\end{thebibliography}

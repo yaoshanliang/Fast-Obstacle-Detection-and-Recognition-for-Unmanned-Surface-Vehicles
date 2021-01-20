@@ -1,0 +1,49 @@
+This is BibTeX, Version 0.99d (TeX Live 2020)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: sensors.aux
+The style file: Definitions/mdpi.bst
+Database file #1: reference.bib
+Warning--string name "aug" is undefined
+--line 106 of file reference.bib
+You've used 42 entries,
+            2862 wiz_defined-function locations,
+            789 strings with 12390 characters,
+and the built_in function-call counts, 18672 in all, are:
+= -- 1562
+> -- 1154
+< -- 32
++ -- 426
+- -- 342
+* -- 1539
+:= -- 2912
+add.period$ -- 133
+call.type$ -- 42
+change.case$ -- 42
+chr.to.int$ -- 42
+cite$ -- 42
+duplicate$ -- 893
+empty$ -- 1527
+format.name$ -- 412
+if$ -- 4041
+int.to.chr$ -- 1
+int.to.str$ -- 42
+missing$ -- 42
+newline$ -- 214
+num.names$ -- 128
+pop$ -- 349
+preamble$ -- 0
+purify$ -- 42
+quote$ -- 0
+skip$ -- 569
+stack$ -- 0
+substring$ -- 886
+swap$ -- 273
+text.length$ -- 18
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 294
+warning$ -- 0
+while$ -- 151
+width$ -- 0
+write$ -- 522
+(There was 1 warning)
