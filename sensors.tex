@@ -302,8 +302,14 @@ Inspired by their ideas, we can use a large number of knowledge reserves of the 
 
 ResNet is the abbreviation of Residual Network proposed by He et al. (2016) \cite{he2016deep}. ResNet solved the problems of gradient dispersion and accuracy drop in the deep network so that the network can get deeper and deeper, which not only ensures the accuracy but also controls the speed. ResNet first performs a convolution operation on the input, and then contains four residual blocks and finally performs a fully connected operation to facilitate classification tasks. The network composition diagram is presented in Table \ref{tbl:ResNet}.
 
+%\end{paracol}
+ 
+%\begin{paracol}{2}
+%\linenumbers
+%\switchcolumn
 
-\begin{table}[htbp]
+\end{paracol}
+\begin{table}[H]
 \centering
 \caption{Structure of ResNet (Source: \cite{he2016deep}).}
 \begin{tabular}{c|c|c|c|c|c}
@@ -330,6 +336,9 @@ $\begin{bmatrix}  3\times3, 64 \\  3\times3, 64 \\  \end{bmatrix}\times3$& $\beg
 \end{tabular}
 \label{tbl:ResNet}
 \end{table}
+\begin{paracol}{2}
+\linenumbers
+\switchcolumn
 
 From the column named 50-layer, ResNet50 has four large blocks, each containing 3, 4, 6, and 3 small blocks. There are three convolutions in each small block. In addition, the network has two layers at the beginning and the end, a single convolutional layer and a fully connected layer. Therefore, a total of 50 layers ((3 + 4 + 6 + 3) * 3 + 1 + 1 = 50) are included in ResNet50.
 
@@ -680,7 +689,8 @@ The above configuration has met the requirements of model training. Besides, all
 
 Table \ref{tbl:Parameter} shows the parameter configuration of the PP-YOLO model and the PP-YOLO-mobile model. As can be seen from the table, the difference between the two models is the backbone and data augmentation. The backbone used in the PP-YOLO model is ResNet50 while in the PP-YOLO-mobile model is MobileNetV2. The PP-YOLO-mobile model uses data augmentation while PP-YOLO mobile does not. These two parts are the independent variables of this experiment, and the dependent variable is the trained model.
 
-\begin{table*}[htbp]
+\end{paracol}
+\begin{table}[H]
 \centering
 \caption{Comparison of parameter configuration}
 \begin{tabular}{llll} 
@@ -716,7 +726,10 @@ Table \ref{tbl:Parameter} shows the parameter configuration of the PP-YOLO model
 \bottomrule
 \end{tabular}
 \label{tbl:Parameter}
-\end{table*}
+\end{table}
+\begin{paracol}{2}
+\linenumbers
+\switchcolumn
 
 \subsubsection{Model Training}
 
@@ -832,7 +845,7 @@ The PRC is made by checking the precision and recall for the detection algorithm
 
 As is visualized in Figure \ref{fig:prc}, we can find that when it gets close to the right, the recall value keeps increasing, but the precision is decreasing. For a good prediction, as the recall increases, the decline of precision should be small, that is, the area under the PRC should be large. In other words, if the curve moves to the upper right corner, the overall performance of the model is better. In practice, AP can be understood as calculating the area under the curve to evaluate the performance of the classifier. The greater the precision and recall values, the higher the accuracy on the validation set.
 
-\begin{figure}[htbp]
+\begin{figure}[H]
 \centering
 \subfigure[PRC for PP-YOLO model (IoU = 0.5)]{
 \includegraphics[width=0.46\columnwidth]{images/pr-curve.png}
@@ -957,7 +970,10 @@ Frames per second (FPS) is a way to express how fast the method is. It measures 
 {FPS} = \frac {\text{Number\ of\ Images}} {\text{Total\ Seconds}}
 \end{equation}
 
-\begin{table}[htbp]
+There are 1750 images in the validation set. It takes 47.525 seconds for PP-YOLO model to complete the detection, and 40.058 seconds for the PP-YOLO-mobile model. The value of FPS is usually used to indicate the speed of model detection. Table \ref{tbl:Comparison of FPS in the validation dataset} shows the results of FPS after calculation.
+
+\end{paracol}
+\begin{table}[H]
 \centering
 \caption{Comparison of FPS in the validation dataset}
 \begin{tabular}{llll} 
@@ -970,8 +986,11 @@ PP-YOLO-mobile model&40.058&43.687&23\\
 \end{tabular}
 \label{tbl:Comparison of FPS in the validation dataset}
 \end{table}
+\begin{paracol}{2}
+\linenumbers
+\switchcolumn
 
-There are 1750 images in the validation set. It takes 47.525 seconds for PP-YOLO model to complete the detection, and 40.058 seconds for the PP-YOLO-mobile model. The value of FPS is usually used to indicate the speed of model detection. Table \ref{tbl:Comparison of FPS in the validation dataset} shows the results of FPS after calculation.
+
 
 For the PP-YOLO-mobile model, it can detect 43.687 pictures per second, which is 6.865 more pictures than the PP-YOLO model. From another perspective, the PP-YOLO-mobile takes an average of 23 milliseconds per frame, which is four milliseconds less than the PP-YOLO model. In summary, the PP-YOLO-mobile model is faster than the PP-YOLO model in speed for object detection.
 
@@ -979,7 +998,7 @@ For the PP-YOLO-mobile model, it can detect 43.687 pictures per second, which is
 
 \subsection{Ablation Study}
 
-Sine the PP-YOLO-mobile can improve performance by replacing backbone and data enhancement at the same time. However, it is not sure that both of them contribute to the improvement of the model. It is also possible that only one of them can be used to improve performance. Therefore, an ablation study has also been carried out. The results are summarized in Table \ref{tbl:Results of ablation study}, and the histogram for visual comparison is shown in Figure \ref{fig:ablation-bar}.
+Sine the PP-YOLO-mobile can improve performance by replacing backbone and data enhancement at the same time. However, it is not sure that both of them contribute to the improvement of the model. It is also possible that only one of them can be used to improve performance. Therefore, an ablation study has also been carried out. The results are summarized in Table \ref{tbl:Results of ablation study}.
 
 
 \begin{table}[htbp]
@@ -999,13 +1018,6 @@ D& PP-YOLO + MobileNetV2 + Data Augmentation & 86.9339& 43.687\\
 \label{tbl:Results of ablation study}
 \end{table}
 
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=1\columnwidth]{images/ablation-bar.png}
-\caption{Histogram of ablation study results.}
-\label{fig:ablation-bar}
-\end{figure}
-
 Group A and Group D are the PP-YOLO and PP-YOLO-mobile models analyzed previously. Group B is a combination of PP-YOLO algorithm and MobileNetV2 backbone. Compared with the PP-YOLO model, the accuracy has dropped by 1.4885, but the speed has increased by 8.726. Group C has applied data augmentation based on Group A and achieved a precision increase of 3.3908, but FPS also decreased by 4.368.
 
 Above all, Group C has the highest accuracy, and Group B has the fastest speed. Both MobileNetV2 backbone and data augmentation have their own effects, and one of them alone cannot bring about the improvement of overall performance.
@@ -1015,7 +1027,7 @@ Above all, Group C has the highest accuracy, and Group B has the fastest speed. 
 Evaluation on the server with Tesla GPU has achieved a good result. In real applications, the performance of the hardware in the developer kit is limited, such as CPU, GPU and memory. Besides, since it is battery powered, the output voltage also affects the performance of the model. Table \ref{tbl:performance on Jetson Nano} shows the results of experiments on Nvidia Jetson Nano.
 
 
-\begin{table}[htbp]
+\begin{table}[H]
 \centering
 \caption{Performance on Jetson Nano}
 \begin{tabular}{lllll} 
@@ -1039,7 +1051,7 @@ Above all, the performance is compared in a quantitative way for the PP-YOLO-mob
 
 In some difficult obstacle recognition, such as in the recognition of leaves, grasses, branches, the accuracy of the PP-YOLO-mobile model recognition has been greatly improved. This means that data enhancement can indeed enrich training samples by adjusting brightness, contrast, cropping, etc., and enhance the ability to handle complex targets. The results of data augmentation are presented in Figure \ref{fig:data agumentation}. 
 
-\begin{figure}[htbp]
+\begin{figure}[H]
 \centering
 \subfigure[OriginalImage (1920 x 1080 pixels)]{
 \includegraphics[width=0.4\columnwidth]{images/data-augmentation-1.png}
@@ -1082,7 +1094,7 @@ To compare the detection effects of the two models vividly, we respectively sele
 From the left column, the accuracy of different categories under the PP-YOLO-mobile model has been improved. Accuracy of the ship increased from 0.99 to 1.00, ferry increased from 0.96 to 0.99, and buoy increased from 0.97 to 0.99.
 Similarly, the accuracy in the second column has also been improved. The different bottles have been increased from 0.789 to 0.95, 0.75 to 0.90, and 0.94 to 0.96.
 
-\begin{figure}[htbp]
+\begin{figure}[H]
 \centering
 \subfigure[Ground Truth]{
 \includegraphics[width=0.47\columnwidth]{images/detection-result-1-1.png}
