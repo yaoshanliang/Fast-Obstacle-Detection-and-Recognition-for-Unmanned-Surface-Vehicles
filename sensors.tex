@@ -107,10 +107,10 @@ $^{1}$ \quad Department of Computer Science and Software Engineering, Xi’an Ji
 \abstract{Unmanned Surface Vehicles (USVs) play an essential role in water quality monitoring, riverbed mapping, river rescue, and underwater detection. One of the significant challenges for USVs is obstacle detection and recognition of all kinds of objects such as boats, buoys and garbage floating on the water surface. 
 This research aims to construct an obstacle detection model with high accuracy and high speed. Thus, we create a new river surface obstacle dataset from the video data captured by the USV during its sailing. Besides, the pre-trained weight trained on the Common Objects in Context (COCO) dataset is adopted to implement the training of the PaddlePaddle - You Only Look Once (PP-YOLO) model based on the PP-YOLO algorithm.
 Moreover, a vision-based obstacle detection method for USVs is proposed to detect and recognize the locations and categories of the obstacles from the live video stream captured by the camera on the USV.
-We also propose a novel PP-YOLO-mobile model based on the PP-YOLO model by replacing the backbone with MobileNetV2 and adding a data augmentation method. The experimental results show that compared with the original PP-YOLO model, the mean average precision (mAP) under the PP-YOLO-mobile model is improved by 2.7392\%, and the frames per second (FPS) is improved by 6.704. Furthermore, with the PP-YOLO-mobile model deployed on a Jetson Nano after model pruning, the actual mAP is 86.2752 and FPS is 16.527. These results indicate that the PP-YOLO-mobile model can be used for obstacle detection and recognition on USVs in real scenarios.}
+We also propose a novel PP-YOLO-mobile model based on the PP-YOLO model by replacing the backbone with MobileNetV3-Small and adding a data augmentation method. The experimental results show that compared with the original PP-YOLO model, the mean average precision (mAP) under the PP-YOLO-mobile model is improved by 2.7392\%, and the frames per second (FPS) is improved by 6.704. Furthermore, with the PP-YOLO-mobile model deployed on a Jetson Nano after model pruning, the actual mAP is 86.2752 and FPS is 16.527. These results indicate that the PP-YOLO-mobile model can be used for obstacle detection and recognition on USVs in real scenarios.}
 
 % Keywords
-\keyword{USVs; obstacle detection; PP-YOLO model; PP-YOLO-mobile model; MobileNetV2; data augmentation; mAP; FPS} 
+\keyword{USVs; obstacle detection; PP-YOLO model; PP-YOLO-mobile model; MobileNetV3-Small; data augmentation; mAP; FPS} 
 
 % The fields PACS, MSC, and JEL may be left empty or commented out if not applicable
 %\PACS{J0101}
@@ -153,7 +153,9 @@ Generally, a USV system includes various sensors, communication networks, a navi
 
 Besides, A USV needs capabilities to detect and recognize nearby and long-distance obstacles during the navigation so that they can re-plan the path and avoid obstacles. Detection for USVs should not be limited to objects protruding from the water surface, but also flat objects, such as river garbage, aquatic plants, etc. \cite{7073635}. USVs should also consider their size and weight to adapt to more application scenarios. The camera has therefore become a key sensor for USVs due to their characteristics of low cost, light weight, low energy consumption and wide field of view.
 
-Obstacle detection and recognition are fundamental but challenging tasks in the area of computer vision. Not only the locations of the obstacles need to be marked from the real-time video, but also the category of the obstacles need to be identified. For USVs, due to the different appearance, shape, posture of various objects and the interference of weather and lighting conditions during the imaging process, obstacle detection has always been the most challenging task. On the one hand, obstacle detection can be used not only in the research of obstacle avoidance algorithms and path planning but also in 3D modeling and panoramic visualization of the rivers. On the other hand, it can be applied for reference to applications of Unmanned Ground Vehicles (UGVs) and Unmanned Aerial Vehicles (UAVs).
+Obstacle detection and recognition are fundamental but challenging tasks in the area of computer vision. Not only the locations of the obstacles need to be marked from the real-time video, but also the category of the obstacles need to be identified. For USVs, due to the different appearance, shape, posture of various objects and the interference of weather and lighting conditions during the imaging process, obstacle detection has always been the most challenging task. 
+
+Currently, there are still some shortcomings in the recognition algorithm of water surface obstacles. For example, the accuracy and speed of detection need to be improved, especially in embedded devices with limited computing resources. The improvement of model performance is of great significance. On the one hand, obstacle detection can be used not only in the research of obstacle avoidance algorithms and path planning but also in 3D modeling and panoramic visualization of the rivers. On the other hand, it can be applied for reference to applications of Unmanned Ground Vehicles (UGVs) and Unmanned Aerial Vehicles (UAVs).
 
 
  \section{Related Work}
@@ -255,10 +257,11 @@ This is the final layer of the network which outputs the bounding box coordinate
 
 The paper did not propose a new detection method but focused on combining existing detection methods to achieve an efficient detector. Since many techniques cannot be directly applied to YOLOv3, they need to be adjusted according to its structure.
 
+\end{paracol}
 \begin{table}[htbp]
 \centering
 \caption{The ablation study of tricks on the MS-COCO minival split (Source: \cite{long2020pp}).}
-\begin{tabular}{lp{3cm}<{}lllll} 
+\begin{tabular}{lllllll} 
 \toprule
 \textbf{Group}&\textbf{Methods}&\textbf{mAP}&\textbf{Parameters}&\textbf{GFLOPs}&\textbf{infer time}&\textbf{FPS}\\
 \midrule
@@ -277,120 +280,18 @@ J& I + Better ImageNet Pretrain& 44.6& 43.93 M & 45.12 & 13.7 ms& 72.9\\
 \end{tabular}
 \label{tbl:ablation study pp-yolo}
 \end{table}
+\begin{paracol}{2}
+\linenumbers
+\switchcolumn
 
 Table \ref{tbl:ablation study pp-yolo} shows the comparison of the mAP, parameters, FLOPs, infer time and FPS produced by different tricks. The results indicate that by using different combinations, PP-YOLO can achieve performance improvements.
 
 Although PP-YOLO has dramatically improved in speed and accuracy, it has not done more experiments on the backbone, FPN, data augmentation and NAS. Therefore, these aspects can be studied to improve the effectiveness of the detector.
 
 
-
-\subsection{Model Improvement Skills}
-\subsubsection{Transfer Learning}
-
-When training a deep learning model, a large number of data is usually required. However, data preparation processes such as data collection and labeling will cost a lot in labor and time.
-Pan and Yang (2009) proposed transfer learning in which that we can choose to train a convergent and effective model on an extensive public data set as the pre-training weight and use business data to fine-tune the model on this basis \cite{pan2009survey}.
-
-Zhuang et al. (2020) reviewed a variety of representative transfer learning methods from the perspective of data and models, especially similar transfer learning methods \cite{zhuang2020comprehensive}. He also briefly introduced the application of transfer learning.
-Inspired by their ideas, we can use a large number of knowledge reserves of the pre-training model to quickly and efficiently train a model with excellent performance for specific business scenarios.
-
-
-\subsubsection{Backbone}
-
-\begin{itemize}
-\item ResNet50
-\end{itemize}
-
-ResNet is the abbreviation of Residual Network proposed by He et al. (2016) \cite{he2016deep}. ResNet solved the problems of gradient dispersion and accuracy drop in the deep network so that the network can get deeper and deeper, which not only ensures the accuracy but also controls the speed. ResNet first performs a convolution operation on the input, and then contains four residual blocks and finally performs a fully connected operation to facilitate classification tasks. The network composition diagram is presented in Table \ref{tbl:ResNet}.
-
-%\end{paracol}
- 
-%\begin{paracol}{2}
-%\linenumbers
-%\switchcolumn
-
-\end{paracol}
-\begin{table}[H]
-\centering
-\caption{Structure of ResNet (Source: \cite{he2016deep}).}
-\begin{tabular}{c|c|c|c|c|c}
-\hline
-\textbf{layer name}                & \textbf{output size}    & \textbf{18-layer} & \textbf{34-layer} & \textbf{50-layer} & \textbf{101-layer}  \\ \hline
-\textbf{conv1}                     & 112$\times$112               & \multicolumn{4}{c}{7$\times$7, 64, stride 2}                                                              \\ \hline
-\multirow{2}{*}{\textbf{conv2\_x}} & \multirow{2}{*}{56$\times$56} & \multicolumn{4}{c}{3$\times$3 max pool, stride 2}                                                         \\ \cline{3-6}  &   &$\begin{bmatrix} 3\times3, 64 \\  3\times3, 64 \\  \end{bmatrix}\times2$&
-$\begin{bmatrix}  3\times3, 64 \\  3\times3, 64 \\  \end{bmatrix}\times3$& $\begin{bmatrix}1\times1, 64 \\  3\times3, 64 \\1\times1, 256 \\  \end{bmatrix}\times3$ 
-& $\begin{bmatrix}  1\times1, 64 \\  3\times3, 64 \\1\times1, 256 \\    
-\end{bmatrix}\times3$                               \\ \hline
-\textbf{conv3\_x}  & 28$\times$28 & $\begin{bmatrix}  3\times3, 128 \\  3\times3, 128 \\ \end{bmatrix}\times2$&$\begin{bmatrix}  3\times3, 128 \\  3\times3, 128 \\  \end{bmatrix}\times4$& $\begin{bmatrix}  1\times1, 128 \\  3\times3, 128 \\1\times1, 512 \\      \end{bmatrix}\times4$ & $\begin{bmatrix}  1\times1, 128 \\  3\times3, 128 \\1\times1, 512 \\    
-\end{bmatrix}\times4$ \\ \hline\textbf{conv4\_x}    & 14$\times$14       & $\begin{bmatrix} 3\times3, 256 \\  3\times3, 256 \\    \end{bmatrix}\times2$
-&$\begin{bmatrix}  3\times3, 256 \\  3\times3, 256 \\    \end{bmatrix}\times6$
-& $\begin{bmatrix}  1\times1, 256 \\  3\times3, 256 \\1\times1, 1024\end{bmatrix}\times6$ 
-& $\begin{bmatrix}  1\times1, 256 \\  3\times3, 256 \\1\times1, 1024 \\    
-\end{bmatrix}\times23$      \\ \hline
-\textbf{conv5\_x}     & 7$\times$7   & $\begin{bmatrix}  3\times3, 512 \\  3\times3, 512 \\    
-\end{bmatrix}\times2$&$\begin{bmatrix}  3\times3, 512 \\  3\times3, 512 \\    
-\end{bmatrix}\times3$
-& $\begin{bmatrix}  1\times1, 512 \\  3\times3, 512 \\1\times1, 2048 \\      
-\end{bmatrix}\times3$ & $\begin{bmatrix}  1\times1, 512 \\  3\times3, 512 \\1\times1, 2048 \\    
-\end{bmatrix}\times3$   \\ \hline
-\textbf{}    & 1$\times$1   & \multicolumn{4}{c}{average pool, 1000-d fc, softmax}                                             \\ \hline\multicolumn{2}{c|}{\textbf{FLOPs}}  & $1.8\times10^{9}$ & $3.6\times10^{9}$ &$3.8\times10^{9}$ & $7.6\times10^{9}$  \\ \hline
-\end{tabular}
-\label{tbl:ResNet}
-\end{table}
-\begin{paracol}{2}
-\linenumbers
-\switchcolumn
-
-From the column named 50-layer, ResNet50 has four large blocks, each containing 3, 4, 6, and 3 small blocks. There are three convolutions in each small block. In addition, the network has two layers at the beginning and the end, a single convolutional layer and a fully connected layer. Therefore, a total of 50 layers ((3 + 4 + 6 + 3) * 3 + 1 + 1 = 50) are included in ResNet50.
-
-
-\begin{itemize}
-\item MobileNetV2
-\end{itemize}
-
-Mobile Network (MobileNet) is a lightweight visual architecture suitable for embedded devices proposed by Sandler et al. (2018) from Google \cite{sandler2018mobilenetv2}. The purpose of this model is to ensure the efficiency of use on mobile devices. MobileNet has the advantages of a few parameters and simple structure, and can be used in computer vision applications such as classification and detection.
-
-The structure of MobileNetV2 is based on inverted residual, which is essentially a residual network. The traditional residual block has a large number of channels at both ends of the block and a small number in the middle, while the inverted residual is that the number of channels at both ends of the block is small, and there are many channels in the block.
-
-
-\begin{table}[htbp]
-\centering
-\caption{Structure of MobileNetV2 (Source: \cite{sandler2018mobilenetv2}).}
-\begin{tabular}{llllll} 
-\toprule
-\textbf{Input}&\textbf{Operator}&\textbf{$t$}&\textbf{$c$}&\textbf{$n$}&\textbf{$s$}\\
-\midrule
-$224^2$ $\times$ 3&3conv2d & - & 32 & 1 & 2\\
-$112^2$ $\times$ 32& bottleneck & 1 & 16 & 1 &1\\
-$112^2$ $\times$ 16& bottleneck & 6 & 24 & 2 &2\\
-$56^2$ $\times$ 24& bottleneck & 6 & 32 & 3 &2\\
-$28^2$ $\times$ 32& bottleneck & 6 & 64 & 4 &2\\
-$14^2$ $\times$ 64& bottleneck & 6 & 96 & 3 &1\\
-$14^2$ $\times$ 96& bottleneck & 6 & 160 & 3 &2\\
-$7^2$ $\times$ 160& bottleneck & 6 & 320 & 1 &1\\
-$7^2$ $\times$ 320& conv2d 1 $\times$ 1 & - & 1280 & 1 &1\\
-$7^2$ $\times$ 1280& avgpool 7 $\times$ 7& - & - & 1& 1\\
-1 $\times$ 1 $\times$ 1280& conv2d 1 $\times$ 1& - & k & - & \\
-\bottomrule
-\end{tabular}
-\label{tbl:MobileNetV2}
-\end{table}
-
-
-
-As can be seen from Table \ref{tbl:MobileNetV2}, the input image resolution of the classification network structure shown in the figure is 224 $\times$ 224. The primary unit bottleneck is the inverted residuals module. The output is full convolution instead of softmax, and $k$ is the number of categories of the recognition target.
-
-MobileNetV2 uses depth-wise (DW) convolution and point-wise (PW) convolution to extract features. The combination of these two operations is also called Depth-wise Separable Convolution, which was widely used in Xception before \cite{sandler2018mobilenetv2}. The advantage is that in theory, the time complexity and space complexity of the convolutional layer can be reduced.
-
-\subsubsection{Data Augmentation}
-
-The data augmentation technology generates similar but different training samples by making a series of random changes to the training images, thereby expanding the size of the training dataset. Frid-Adar et al. (2018) proposed that the commonly used image augmentation techniques are mirror transformation, rotation, zooming, cropping, translation, brightness modification, noise adding, cutting, and color changing \cite{frid2018gan}.
-
-Compared with the above-mentioned standard image augmentation methods, researchers have also proposed many improved image augmentation strategies, like mixup, random distort, random expand, etc. \cite{cubuk2018autoaugment, devries2017improved}. These strategies are all inserting certain operations at different stages of the standard augmentation method. Through these methods, the diversity of samples is increased. If we apply these methods to our experiments, more complex situations can be handled and complex water obstacles can be detected.
-
 \subsection{Summary}
 
-From the literature described above, it can be found that the obstacle detection of USVs does present significant challenges. A vision-based sensor like a camera is a suitable solution because it can not only perceive obstacles but also know the appearance of obstacles. The PP-YOLO algorithm is currently a fast and accurate algorithm, which can be applied to the obstacle recognition of USVs. Some model improvement techniques, such as 
-backbone replacement, data augmentation can be applied to the PP-YOLO, which may increase model accuracy and speed.
+From the literature described above, it can be found that the obstacle detection of USVs does present significant challenges. A vision-based sensor like a camera is a suitable solution because it can not only perceive obstacles but also know the appearance of obstacles. The PP-YOLO algorithm is currently a fast and accurate algorithm, which can be applied to the obstacle recognition of USVs. 
 
 \section{System Design}
 
@@ -407,7 +308,7 @@ As can be vividly seen from Figure \ref{fig:system architecture}, the system des
 \subsection{USV Construction}
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=1\columnwidth]{images/USV-architecture.jpg}
+\includegraphics[width=1\columnwidth]{images/USV-architecture.png}
 \caption{Architecture of the USVs}
 \label{fig:Architecture of USVs}
 \end{figure}
@@ -445,22 +346,12 @@ some improvements need to be done. By referring to the methods from \cite{zoph20
 \begin{itemize}
 \item{Backbone Replacement}
 
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=0.45\columnwidth]{images/MobileNetV2-structure.png}
-\caption{Network of MobileNetV2.}
-\label{fig:Microstructure}
-\end{figure}
-
-In the MobileNet, Depth-wise Separable Convolution is introduced, which dramatically reduce the complexity cost and model size of the network. The PP-YOLO-mobile model uses MobileNetV2 as the backbone to extract information features from the input image, which is suitable for low-power embedded devices.
+Mobile Network (MobileNet) is a lightweight visual architecture suitable for embedded devices proposed by Sandler et al. (2018) from Google \cite{sandler2018mobilenetv2}. The purpose of this model is to ensure the efficiency of use on mobile devices. MobileNet has the advantages of a few parameters and simple structure, and can be used in computer vision applications such as classification and detection.
 
 
+MobileNetV3 redesigned the time-consuming layers \cite{howard2019searching}. Both MobileNet V1 and V2 start with a conventional 3 $\times$ 3 convolutional layer with 32 filters, but experiments have shown that this is a relatively time-consuming layer. In fact, only 16 filters are enough to filter the 224 $\times$ 224 feature map. Besides, in MobileNetV2, before the global average pooling layer, it is a 1 $\times$ 1 convolution, which expands the number of channels from 320 to 1280. The advantage of this is that there are more and richer features to satisfy the prediction when forecasting, but it also brings additional computational cost and delay. Therefore, what needs to be improved is to reduce the delay while retaining high-dimensional features. In MobileNetV3, the 1 $\times$ 1 convolutional layer is behind the global average pooling layer, so it can be used for smaller feature maps and therefore faster.
 
-In the network design of MobileNetV2 in Figure \ref{fig:Microstructure}, the author not only continued to use the Depth-wise Separable Convolution but also Expansion layer and Projection layer. This projection layer uses a 1 x 1 network structure, and its purpose is to map high-dimensional features to low-dimensional space. In addition, the network uses a 1 x 1 network structure to map high-dimensional space to low-dimensional space is also called the Bottleneck layer.
-
-In contrast to the projection layer, the expansion layer uses a 1 x 1 network structure to map the low-dimensional space to the high-dimensional space. The expansion has a hyperparameter that expands the dimension several times, which can be adjusted according to the actual situation. The default value is 6, which means the expansion is 6 times.
-
-
+MobileNetV3 contains MobileNetV3-Large and MobileNetV3-Small which are targeted for high and low resource use cases. MobileNetV3-Small is 6.6\% more accurate and 5\% faster compared to MobileNetV2 \cite{howard2019searching}. The PP-YOLO-mobile model uses MobileNetV3-Small as the backbone to extract information features from the input image, which is suitable for low-power embedded devices.
 
 \end{itemize}
 
@@ -468,11 +359,11 @@ In contrast to the projection layer, the expansion layer uses a 1 x 1 network st
 \item{Data Augmentation}
 
 
-Since all the data comes from videos of the USV when sailing, the source of the data is relatively simple and cannot cover various environments. Besides, obstacles on the river surface will be affected by light exposure and river fluctuations. Therefore, the appearance of the same obstacle at different times is different, which also brings difficulty to obstacle detection. In order to recognize obstacles under different conditions, the model needs to deal with the influence of different lighting, background environment and other noises.
+Since all the data comes from videos of the USV when sailing, the source of the data is relatively simple and cannot cover various environments. Besides, obstacles on the river surface will be affected by light exposure and river fluctuations. Therefore, the appearance of the same obstacle at different times is different, which also brings difficulty to obstacle detection. In order to recognize obstacles under different conditions, the model needs to deal with the influence of different lighting, background environment and other noises. 
 
-The data augmentation operation is used to increase the diversity of dataset during model training, thereby enhancing the ability of generalisation. In this research, data augmentation expands the dataset of river obstacles by including brightness transformation, contrast enhancement, sharpening, etc. The following data augmentation methods are used in this experiment:
+The data augmentation technology generates similar but different training samples by making a series of random changes to the training images, thereby expanding the size of the training dataset. Frid-Adar et al. (2018) proposed that the commonly used image augmentation techniques are mirror transformation, rotation, zooming, cropping, translation, brightness modification, noise adding, cutting, and color changing \cite{frid2018gan}.
 
-
+Compared with the above-mentioned standard image augmentation methods, researchers have also proposed many improved image augmentation strategies, like mixup, random distort, random expand, etc. \cite{cubuk2018autoaugment, devries2017improved}. These strategies are all inserting certain operations at different stages of the standard augmentation method. Through these methods, the diversity of samples is increased. In this research, the following data augmentation methods are used:
 
 \begin{itemize}
 \item{Mixup}
@@ -534,9 +425,9 @@ Inspired by his idea, we changed multiple methods at the same time by controllin
 \midrule
 A& PP-YOLO + ResNet50 (Benchmark) \\
 \cmidrule(r){1-2}
-B& PP-YOLO + MobileNetV2 \\
+B& PP-YOLO + MobileNetV3-Small \\
 C& PP-YOLO + ResNet50 + Data Augmentation \\
-D& PP-YOLO + MobileNetV2 + Data Augmentation\\
+D& PP-YOLO + MobileNetV3-Small + Data Augmentation\\
 \bottomrule
 \end{tabular}
 \label{tbl:design of ablation study for PP-YOLO}
@@ -549,7 +440,7 @@ D& PP-YOLO + MobileNetV2 + Data Augmentation\\
 
 
 \begin{itemize}
-\item{Group B is replaced with MobileNetV2 backbone based on Group A, which is used to compare the performance of the two backbone with Group A.}
+\item{Group B is replaced with MobileNetV3-Small backbone based on Group A, which is used to compare the performance of the two backbone with Group A.}
 \end{itemize}
 
 \begin{itemize}
@@ -565,15 +456,7 @@ D& PP-YOLO + MobileNetV2 + Data Augmentation\\
 \subsection{Data Collection}
 
 \subsubsection{Singapore Maritime Dataset}
-The Singapore Maritime Dataset (SMD) is a set of videos of the sea surface from Singapore captured by Dilip K. Prasad and volunteers using a Canon 70D camera \cite{prasad2017video}. All the videos are acquired in high definition (1080 $\times$ 1920 pixels) and are divided into three types, on-shore videos, on-board videos and Near Infra Red (NIR) videos. From the contents of the videos, they cover not only different time periods, such as before sunrise, sunrise, noon, afternoon, evening, and after sunset, but also include different weather conditions, like sunny, haze, and rain. Totally, there are 81 videos with nine different categories and 240,842 object labels in this dataset. Figure \ref{fig:Simple images of the SMD} displays simple images of the dataset and Table \ref{tbl:Properties of Singapore Maritime Dataset} summarizes the properties of each type of video in the dataset.
-
-
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=1\columnwidth]{images/SMD-example.png}
-\caption{Simple images of the SMD.}
-\label{fig:Simple images of the SMD}
-\end{figure}
+The Singapore Maritime Dataset (SMD) is a set of videos of the sea surface from Singapore captured by Dilip K. Prasad and volunteers using a Canon 70D camera \cite{prasad2017video}. All the videos are acquired in high definition (1080 $\times$ 1920 pixels) and are divided into three types, on-shore videos, on-board videos and Near Infra Red (NIR) videos. From the contents of the videos, they cover not only different time periods, such as before sunrise, sunrise, noon, afternoon, evening, and after sunset, but also include different weather conditions, like sunny, haze, and rain. Totally, there are 81 videos with nine different categories and 240,842 object labels in this dataset. Table \ref{tbl:Properties of Singapore Maritime Dataset} summarizes the properties of each type of video in the dataset.
 
 \begin{table}[htbp]
 \centering
@@ -597,15 +480,7 @@ Total& 5.28 G&  81 &63 & 31,653 &240,842\\
 
 Since the SMD are focused on objects from the sea surface, obstacles on rivers are not provided, such as water plants and floating garbage. To achieve the function of guiding the USVs to detect the obstacles, dataset needs to be expanded with more kinds of obstacles.
 
-The custom dataset consists of two parts, one is the video data collected by a camera deployed on the USV during its navigation, and the other is the images of the river surface retrieved from the Internet. Labeling tool named LabelMe is used to label the images by drawing rectangular boxes and selecting corresponding labels. The location and classification information of each marked object in the image is saved in a JSON format file. Figure \ref{fig:Simple images of the custom dataset} shows some images from the custom dataset. 
-
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=1\columnwidth]{images/custom-dataset-example.png}
-\caption{Simple images of the custom dataset.}
-\label{fig:Simple images of the custom dataset}
-\end{figure}
-
+The custom dataset consists of two parts, one is the video data collected by a camera deployed on the USV during its navigation, and the other is the images of the river surface retrieved from the Internet. Labeling tool named LabelMe is used to label the images by drawing rectangular boxes and selecting corresponding labels. The location and classification information of each marked object in the image is saved in a JSON format file. 
 
 \subsubsection{USV Dataset}
 After the custom dataset is all marked, it is merged with the SMD to form the USV dataset. Finally, the USV dataset contains 17 categories and a total of 8,750 images. In the dataset, common obstacles on the river surface are included, such as various boats, buoys, bottles, and water plants, which can meet the data preparation for obstacle detection and recognition.
@@ -644,50 +519,20 @@ Total& 8,750& 6,125& 1,750& 875 \\
 \end{table}
 
 
-
-\subsubsection{Data Processing}
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=1\columnwidth]{images/dataset-folder.png}
-\caption{Structure of the dataset folder.}
-\label{fig:Structure of the dataset folder}
-\end{figure}
-
 As the standard format for object detection is PascalVOC with XML format, the labeled data needs to be converted to that format using python script. The information of all targets in each image are recorded, including the pixel positions of the four vertices, the name of the target category and the path where the picture is located.
-Besides, image files and annotation files need to be stored in their respective folders named JPEGImages and Annotation. There is also one text file recording all the 17 categories and three text files for image lists of training, validation and testing.
-
-After those processes, the complete USV dataset is finished. When the model starts training, the dataset can be directly loaded. The structure of the dataset folder is shown in Figure \ref{fig:Structure of the dataset folder}.
+Besides, image files and annotation files need to be stored in their respective folders named JPEGImages and Annotation. There is also one text file recording all the 17 categories and three text files for image lists of training, validation and testing. After those processes, the complete USV dataset is finished. When the model starts training, the dataset can be directly loaded.
 
 
 \subsection{Model Implementation}
 
 \subsubsection{Hardware Environment}
 
-Table \ref{tbl:Hardware} shows the hardware environment for the model training, including 4-core CPU, 32G memory, 100G hard disk. A Tesla V100 graphics card is equipped in the server with a memory of 16GB. Furthermore, the operating system of this server is Ubuntu 18.04.
+The training of the model is carried out on the Ubuntu 18.04 server with a 4-core CPU, a 32G memory card and a 100G hard disk. A Tesla V100 graphics card is also equipped in the server with a memory of 16GB.
 
-\begin{table}[htbp]
-\centering
-\caption{Hardware environment of the training server}
-\begin{tabular}{ll} 
-\toprule
-\textbf{Name}&\textbf{Configuration}\\
-\midrule
-CPU& 4 Core \\
-RAM& 32 GB \\
-GPU& Tesla V100 \\
-Video Memory& 16 GB\\
-Disk& 100 GB\\
-Operating System& Ubuntu 18.04\\
-\bottomrule
-\end{tabular}
-\label{tbl:Hardware}
-\end{table}
-
-The above configuration has met the requirements of model training. Besides, all models are trained in the above configuration to ensure the consistency of the experimental environment.
 
 \subsubsection{Model Configuration}
 
-Table \ref{tbl:Parameter} shows the parameter configuration of the PP-YOLO model and the PP-YOLO-mobile model. As can be seen from the table, the difference between the two models is the backbone and data augmentation. The backbone used in the PP-YOLO model is ResNet50 while in the PP-YOLO-mobile model is MobileNetV2. The PP-YOLO-mobile model uses data augmentation while PP-YOLO mobile does not. These two parts are the independent variables of this experiment, and the dependent variable is the trained model.
+Table \ref{tbl:Parameter} shows the parameter configuration of the PP-YOLO model and the PP-YOLO-mobile model. As can be seen from the table, the difference between the two models is the backbone and data augmentation. The backbone used in the PP-YOLO model is ResNet50 while in the PP-YOLO-mobile model is MobileNetV3-Small. The PP-YOLO-mobile model uses data augmentation while PP-YOLO mobile does not. These two parts are the independent variables of this experiment, and the dependent variable is the trained model.
 
 \end{paracol}
 \begin{table}[H]
@@ -697,7 +542,7 @@ Table \ref{tbl:Parameter} shows the parameter configuration of the PP-YOLO model
 \toprule
 \multicolumn{2}{l}{\textbf{Parameter Name}}&\textbf{PP-YOLO}&\textbf{PP-YOLO-mobile}\\
 \midrule
-\multicolumn{2}{l}{Backbone} & ResNet50 & MobileNetV2 \\
+\multicolumn{2}{l}{Backbone} & ResNet50 & MobileNetV3-Small \\
 \multicolumn{2}{l}{Pre-train Model} & COCO & COCO \\
 \cmidrule(r){1-4}
 
@@ -731,55 +576,52 @@ Table \ref{tbl:Parameter} shows the parameter configuration of the PP-YOLO model
 \linenumbers
 \switchcolumn
 
-\subsubsection{Model Training}
+
+\subsubsection{Model Construction}
+
+\begin{itemize}
+\item{Transfer Learning}
+
+When training a deep learning model, a large number of data is usually required. However, data preparation processes such as data collection and labeling will cost a lot in labor and time.
+Pan and Yang (2009) proposed transfer learning in which that we can choose to train a convergent and effective model on an extensive public data set as the pre-training weight and use business data to fine-tune the model on this basis \cite{pan2009survey}.
+
+Zhuang et al. (2020) reviewed a variety of representative transfer learning methods from the perspective of data and models, especially similar transfer learning methods \cite{zhuang2020comprehensive}. He also briefly introduced the application of transfer learning.
+Inspired by their ideas, we can use a large number of knowledge reserves of the pre-training model to quickly and efficiently train a model with excellent performance for specific business scenarios.
 
  As the category of the custom dataset overlaps with the COCO dataset, most of the features in the new task can be learned by the pre-trained model in the old task. Then the weights trained on the COCO data set by PP-YOLO can be used for transfer learning in this experiment with a small amount of data. The premise of transfer learning is that the weight of the model can be borrowed from a model pre-trained on a similar task, and then fine-tuned on a specific task. PaddleX has provided a PP-YOLO object detection model, which can be used to train a model by configuring some training parameters.
 
-\begin{itemize}
-\item{$num\_epochs$}
-
-$num\_epochs$ is the total number of model training iterations. In the beginning, we set a considerable value of 500 for $num\_epochs$, and judge whether the model converges according to the index performance of the model iteration process on the validation dataset. In addition, the $early\_stop$ strategy in the train interface can also be used. The model will automatically determine whether the model has converged and automatically stop during the training process.
-
 \end{itemize}
 
-\begin{itemize}
-\item{$batch\_size$}
-
-Batch size refers to the number of samples used for forwarding calculation once during the training process. Batch size is highly related to the video memory or memory of the machine. The higher the $batch\_size$, the higher the video memory or memory consumed. For the single GPU operating environment of this experiment, $batch\_size$ is set to 8.
-\end{itemize}
-
-% \begin{itemize}
-% \item{$learning\_rate$}
-
-% $num\_epochs$ is the total number of model training iterations. In the beginning, we set a larger value of 500 for $num\_epochs$, and judge whether the model converges according to the index performance of the model iteration process on the validation dataset. In addition, the $early\_stop$ strategy in the train interface can also be used. The model will automatically determine whether the model has converged and automatically stop during the training process.
-% \end{itemize}
 
 \begin{itemize}
-\item{$lr\_decay\_epochs$} and {$lr\_decay\_gamma$}
+\item{Model Saving}
 
-$lr\_decay\_epochs$ is used to gradually decay the learning rate in the later stage of model training. It is generally a list, such as [6, 8, 10], which means that the learning rate decays once at the sixth, eighth, and tenth epoch. Each learning rate decays as the previous learning rate multiplied by $lr\_decay\_gamma$.
-
-For example, in this experiment, $num\_epochs$ is 500, $learning\_rate$ is 0.000125, $lr\_decay\_epochs$ is [210, 240], and $lr\_decay\_gamma$ is 0.1. This parameter configuration means that after the model starts training, the learning rate is 0.000125 in the first 210 epochs. Between the 210th and 240th epochs, the learning rate used for training is 0.000125 x 0.1 = 0.0000125. And after 240 epochs, the learning rate used is 0.000125 x 0.1 x 0.1 = 0.00000125.
-
-\end{itemize}
-
-According to the above parameters, it can be known that the change of learning rate is divided into the warm-up phase and decay phase. In the warm-up phase, with training iterations, the learning rate gradually increases linearly from a lower value to the set value. In the decay stage, with training iterations, each decay is 0.1 of the previous learning rate,
-
-\subsubsection{Model Saving}
 During the model training process of PaddleX, according to the $save\_interval\_epoch$ parameter setting in the train function interface, the model is saved once every interval corresponding to the number of rounds. The saved model directory contains $model.pdparams$, $model.yml$ and other files which can be used as $pretrain\_weights$ to continue training the model. The best round of evaluation on the validation dataset will be saved in the $best\_model$ folder under the $save\_dir$ directory. Besides, the saved model can also be used in the $paddlex.load\_model$ interface for prediction and evaluation.
+\end{itemize}
 
+\begin{itemize}
+\item{Model Exporting}
 
-
-\subsubsection{Model Exporting}
 When deploying the model on the server, we need to export the model saved above during the training process to inference format. The exported inference format model includes three files $\_\_model\_\_$, $\_\_params\_\_$ and $model.yml$, which represent the network structure, model weight, and configuration file of the model.
 
-\subsubsection{Model Pruning}
+\end{itemize}
+
+\begin{itemize}
+\item{Model Pruning}
+
 Model pruning can better meet the performance requirements in deployment scenarios on the embedded devices. It can effectively reduce the amount of calculation and the size of the model, thereby speeding up prediction performance.
 
-\subsubsection{Model Deployment}
-NVIDIA Jetson Nano developer kit is an embedded board which is also a small, low-power AI computer. Jetson Nano supports high-resolution sensors and can process multiple sensors in parallel. It also supports many common artificial intelligence frameworks, allowing developers to integrate their favorite models and frameworks into products easily.
+\end{itemize}
 
-Some software needs to be installed before deploying the model on Nvidia Jetson, such as CUDA, Cmake and Nvidia Jetpack. PaddlePaddle has provided Nvidia Jetson with a C++ prediction library, which can realize the prediction and visualization of pictures and videos.
+\begin{itemize}
+\item{Model Deployment}
+
+In this research, a Nvidia Jetson Nano developer kit is used. Jetson Nano supports high-resolution sensors and can process multiple sensors in parallel. It also supports many common artificial intelligence frameworks and is easy for developers to integrate different models and frameworks into products. Jetson Nano has a ARMv8 rev (v81) x 4 processor with 4 cores, a NVIDIA Tegra X1 (nvgpu)/integrated graphics card with 1G GPU and a 4G memory card.
+
+
+Some software needs to be installed before deploying the model on the Jetson Nano, such as CUDA, Cmake and Nvidia Jetpack. PaddlePaddle has provided Nvidia Jetson with a C++ prediction library, which can realize the prediction and visualization of pictures and videos.
+
+\end{itemize}
 
 
 \section{Results and Discussion}
@@ -1010,21 +852,21 @@ Sine the PP-YOLO-mobile can improve performance by replacing backbone and data e
 \midrule
 A& PP-YOLO + ResNet50 (Benchmark) &84.1947 & 36.822\\
 \cmidrule(r){1-4}
-B& PP-YOLO + MobileNetV2 &82.7062 & 45.548\\
+B& PP-YOLO + MobileNetV3-Small &82.7062 & 45.548\\
 C& PP-YOLO + ResNet50 + Data Augmentation & 87.5855 & 32.454\\
-D& PP-YOLO + MobileNetV2 + Data Augmentation & 86.9339& 43.687\\
+D& PP-YOLO + MobileNetV3-Small + Data Augmentation & 86.9339& 43.687\\
 \bottomrule
 \end{tabular}
 \label{tbl:Results of ablation study}
 \end{table}
 
-Group A and Group D are the PP-YOLO and PP-YOLO-mobile models analyzed previously. Group B is a combination of PP-YOLO algorithm and MobileNetV2 backbone. Compared with the PP-YOLO model, the accuracy has dropped by 1.4885, but the speed has increased by 8.726. Group C has applied data augmentation based on Group A and achieved a precision increase of 3.3908, but FPS also decreased by 4.368.
+Group A and Group D are the PP-YOLO and PP-YOLO-mobile models analyzed previously. Group B is a combination of PP-YOLO algorithm and MobileNetV3-Small backbone. Compared with the PP-YOLO model, the accuracy has dropped by 1.4885, but the speed has increased by 8.726. Group C has applied data augmentation based on Group A and achieved a precision increase of 3.3908, but FPS also decreased by 4.368.
 
-Above all, Group C has the highest accuracy, and Group B has the fastest speed. Both MobileNetV2 backbone and data augmentation have their own effects, and one of them alone cannot bring about the improvement of overall performance.
+Above all, Group C has the highest accuracy, and Group B has the fastest speed. Both MobileNetV3-Small backbone and data augmentation have their own effects, and one of them alone cannot bring about the improvement of overall performance.
 
 
 \subsection{Performance on Jetson Nano}
-Evaluation on the server with Tesla GPU has achieved a good result. In real applications, the performance of the hardware in the developer kit is limited, such as CPU, GPU and memory. Besides, since it is battery powered, the output voltage also affects the performance of the model. Table \ref{tbl:performance on Jetson Nano} shows the results of experiments on Nvidia Jetson Nano.
+Evaluation on the server with Tesla V100 GPU has achieved a good result. In real applications, the performance of the hardware in the developer kit is limited, such as CPU, GPU and memory. Besides, since it is battery powered, the output voltage also affects the performance of the model. Table \ref{tbl:performance on Jetson Nano} shows the results of experiments on Nvidia Jetson Nano.
 
 
 \begin{table}[H]
@@ -1047,7 +889,7 @@ After model pruning, the size of the model has been dramatically reduced, from 2
 
 
 \subsection{Discussion}
-Above all, the performance is compared in a quantitative way for the PP-YOLO-mobile model and the original PP-YOLO model. According to the results, by replacing the ResNet50 backbone with the MobileNetV2 backbone, the speed of model recognition can be improved. Through data augmentation, the accuracy of model recognition can be increased. In detail, the ResNet50 backbone has a larger number of parameters and obviously shows better performance than MobileNetV2. After replacing with the MobileNetV2 backbone, the model becomes simpler, and the detection speed is improved. Furthermore, data augmentation enriches the diversity of training data, and more complex pictures are processed during model training, so that the speed of detection is improved.
+Above all, the performance is compared in a quantitative way for the PP-YOLO-mobile model and the original PP-YOLO model. According to the results, by replacing the ResNet50 backbone with the MobileNetV3-Small backbone, the speed of model recognition can be improved. Through data augmentation, the accuracy of model recognition can be increased. In detail, the ResNet50 backbone has a larger number of parameters and obviously shows better performance than MobileNetV3-Small. After replacing with the MobileNetV3-Small backbone, the model becomes simpler, and the detection speed is improved. Furthermore, data augmentation enriches the diversity of training data, and more complex pictures are processed during model training, so that the speed of detection is improved.
 
 In some difficult obstacle recognition, such as in the recognition of leaves, grasses, branches, the accuracy of the PP-YOLO-mobile model recognition has been greatly improved. This means that data enhancement can indeed enrich training samples by adjusting brightness, contrast, cropping, etc., and enhance the ability to handle complex targets. The results of data augmentation are presented in Figure \ref{fig:data agumentation}. 
 
@@ -1127,7 +969,7 @@ Similarly, the accuracy in the second column has also been improved. The differe
 
 As the detection and recognition of obstacles for USVs are challenging, this research aims to construct a model with high accuracy and high speed which can be used in real scenarios. By reading extensive literature and researching on the latest papers, the PP-YOLO algorithm is considered to be the most accurate one-stage algorithm. Compared with the two-stage algorithm, it does not require the region proposal stage and directly generates the class probability and position coordinate value of the object. After a single detection, the final detection result can be directly obtained, so it has a faster detection speed that can be used for USVs.
 
-By replacing the ResNet50 backbone in the original PP-YOLO model with the simpler MobileNetV2 backbone, plus the data augmentation method. The accuracy and speed of the model are improved at the same time. In detail, the accuracy is increased by 2.7392\% in mAP, and the speed is increased by 6.865 in FPS.
+By replacing the ResNet50 backbone in the original PP-YOLO model with the simpler MobileNetV3-Small backbone, plus the data augmentation method. The accuracy and speed of the model are improved at the same time. In detail, the accuracy is increased by 2.7392\% in mAP, and the speed is increased by 6.865 in FPS.
 
 By pruning the exported model, the size of the model is reduced from the original 173.4MB to 26.4MB. After being deployed on the Jetson Nano developer kit, the accuracy is 86.2752, and the FPS value is 16.527, which meets the requirements of real-time target detection for USVs.
 
@@ -1144,7 +986,7 @@ The results present that the PP-YOLO-mobile model has improved the average accur
 \end{itemize}
 
 Moreover, through an ablation study, we compared the impact on the model when the backbone replacement and data augmentation are modified separately.
-Although the PP-YOLO models with ResNet50 backbone have a larger mAP than the PP-YOLO models with MobileNetV2 backbone, they also have a smaller FPS than other models. The ResNet50 backbone has a complex network structure and many parameters which leads to better performance in mAP and worse performance in FPS.
+Although the PP-YOLO models with ResNet50 backbone have a larger mAP than the PP-YOLO models with MobileNetV3-Small backbone, they also have a smaller FPS than other models. The ResNet50 backbone has a complex network structure and many parameters which leads to better performance in mAP and worse performance in FPS.
 
 
 Our proposed PP-YOLO-mobile belongs to the lightweight deep learning model. They have a relatively simple network structure and few parameters. Although the mAP of our PP-YOLO-mobile model is a reduction compared with the PP-YOLO with data augmentation, the reduction is much smaller than the increase of FPS, and almost can be ignored. According to specific scenarios, our proposed model is more suitable for deploying on embedded devices.
@@ -1179,13 +1021,6 @@ So far, there are few public datasets of floating objects on the Internet. Categ
 Besides, from experiments in real scenes, we found that in the case of high winds, water splashes are sometimes mistaken for obstacles such as birds, which affect the normal navigation for the USVs. In addition, the shaking of the camera on the water and the water splashing on the lens will also affect the recognition of obstacles. Therefore, a camera with anti-shake and lens heating function is essential.
 
 Finally, obstacles under the water also need to be considered in the next research. For example, there may be some obstacles that have a small part on the water surface but a larger part under the water, which will cause misjudge and collision. Sensors such as sonar need to be fused to the USVs to form a coordinated detection of obstacles on the water surface and underwater.
-
-
-\subsection{Further Study}
-
-All these limitations may affect the performance of obstacle detection and recognition for USVs. Thus, future research designs will take individual factors into consideration. In terms of models, we will continue to study the latest and best target detection algorithms and some improvement skills. Usually, those optimal algorithms are generated on servers with better performance, some improvements need to be done on the models to meet the requirements of the embedded developer kit.
-
-After the obstacle is detected, the distance between the USV and the obstacle also needs to be measured. The camera has disadvantages in measuring distance in which the accuracy of distance measurement is easily affected by the environment. The millimeter-wave radar has a strong ability to resist environmental interference and can meet the requirements of adaptability to the all-weather climate. Therefore, an essential task we plan to carry out in the next step is to combine the advantages of radar and camera to detect and recognize obstacles.
 
 
 
