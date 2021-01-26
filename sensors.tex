@@ -654,23 +654,23 @@ Recall = \frac{\text{TP}}{\text{TP + FN} } = \frac{\text{TP}}{\text{all\ ground-
 \multicolumn{1}{c}{} & \textbf{PP-YOLO} & \textbf{PP-YOLO-mobile} & \textbf{PP-YOLO} & \textbf{PP-YOLO-mobile} \\
 
 \midrule
-ball& 0.8462& 0.9167& 0.9167& 0.9167 \\
-boat& 0.9877& 0.9756& 0.9756& 0.9756 \\
-bottle& 0.8471& 0.8377& 0.9112& 0.9507 \\
-branch& 0.6712& 0.6353& 0.6049& 0.6667 \\
-buoy& 0.9735& 0.9815& 0.9875& 0.9938 \\
-ferry& 0.9979& 0.9979& 0.9896& 1.0000 \\
-flying-bird& 0.9245&0.9455 & 0.9423& 1.0000 \\
-grass& 0.6364& 0.8108& 0.4773& 0.6818 \\
-kayak& 0.9175& 0.8952& 0.9175& 0.9691 \\
-leaf& 0.6250& 0.5510& 0.4651& 0.6279 \\
-milk-box& 0.8723& 0.7963& 0.8723& 0.9149 \\
-other& 0.9609& 0.9767& 0.9733& 0.9909 \\
-plastic-bag& 0.7778& 0.7528& 0.8514& 0.9054 \\
-plastic-garbage& 0.7143&0.6000 & 0.6452& 0.6774 \\
+ball& 0.8462& 0.9231& 0.9167& 1.0000 \\
+boat& 0.9877& 1.0000& 0.9756& 0.9878 \\
+bottle& 0.8471& 0.8538& 0.9112& 0.9605 \\
+branch& 0.6712& 0.6019& 0.6049& 0.7654 \\
+buoy& 0.9735& 0.9755& 0.9875& 0.9938 \\
+ferry& 0.9979& 0.9938& 0.9896& 0.9979 \\
+flying-bird& 0.9245&0.9811 & 0.9423& 1.0000 \\
+grass& 0.6364& 0.7500& 0.4773& 0.6818 \\
+kayak& 0.9175& 0.8962& 0.9175& 0.9794 \\
+leaf& 0.6250& 0.4464& 0.4651& 0.5814 \\
+milk-box& 0.8723& 0.7414& 0.8723& 0.9149 \\
+other& 0.9609& 0.9812& 0.9733& 0.9931 \\
+plastic-bag& 0.7778& 0.7667& 0.8514& 0.9324 \\
+plastic-garbage& 0.7143&0.6750 & 0.6452& 0.8710 \\
 sail-boat& 1.0000& 1.0000& 1.0000& 1.0000 \\
-ship& 0.9890& 0.9887& 0.9883& 0.9944 \\
-speed-boat& 0.9667& 0.9596& 0.9528& 0.9754 \\
+ship& 0.9890& 0.9921& 0.9883& 0.9962 \\
+speed-boat& 0.9667& 0.9735& 0.9528& 0.9815 \\
 
 \bottomrule
 \end{tabular}
@@ -702,7 +702,7 @@ As is visualized in Figure \ref{fig:prc}, we can find that when it gets close to
 
 It can be seen intuitively from the figure that the PR curve of the PP-YOLO-mobile model is more concentrated in the upper right corner. 
 The curve closest to the lower-left corner, that is, the categories with the smallest AP value are grass, leaf, and branch in both figures.
-From the point of view of AP value, the grass rises from 49.87 to 72.73, the leaf rises from 52.33 to 59.11, and the branch rises from 63.82 to 67.80. Some other categories, like the bottle, flying-bird, plastic-bag, etc., have a slight increase in AP value from the PP-YOLO-mobile model. This result proves that accuracy can be improved by the PP-YOLO-mobile model.
+From the point of view of AP value, the grass rises from 49.87 to 73.60, the leaf rises from 52.33 to 59.54, and the branch rises from 63.82 to 72.69. Some other categories, like the bottle, flying-bird, plastic-bag, etc., have a slight increase in AP value from the PP-YOLO-mobile model. This result proves that accuracy can be improved by the PP-YOLO-mobile model.
 
 
 At this time, a question is raised, why some categories have low AP values, and some have high AP values. Through the classification and analysis of the categories, Table \ref{tbl:Comparison of AP in different dataset} from the original dataset is presented. Categories with high AP value are mostly from the SMD, while the categories with low AP value are from the custom dataset. In the SMD, the target comes from the marine, mainly some fixed-shaped objects which are easy to detect after training. However, the custom dataset contains some objects on the river surface, such as grass, leaves, and branches. They tend to gather together, and their shapes are not fixed, which brings great difficulty to object detection.
@@ -720,26 +720,26 @@ At this time, a question is raised, why some categories have low AP values, and 
 
 \midrule
 \multirow{7}{*}{Singapore Maritime Dataset} 
-& boat& 97.86  & 97.93  \\
-& buoy & 98.97 & 98.97 \\
-& ferry & 99.95 & 100.00 \\
-& flying-bird & 90.78 & 97.10 \\
-& kayak & 93.04 & 97.68 \\
-& other & 97.55 & 98.69 \\
+& boat& 97.86  & 98.02  \\
+& buoy & 98.97 & 99.38 \\
+& ferry & 99.95 & 99.93 \\
+& flying-bird & 90.78 & 100.00 \\
+& kayak & 93.04 & 98.12 \\
+& other & 97.55 & 98.85 \\
 & sail-boat & 100.00 & 100.00 \\
-& ship & 98.97 & 98.97 \\
-& speed-boat & 97.67 & 98.33 \\
+& ship & 98.97 & 98.98 \\
+& speed-boat & 97.67 & 98.38 \\
 \cmidrule(r){1-4}
 
 \multirow{8}{*}{Custom Dataset} 
 & ball& 97.11  & 93.60 \\
-& bottle & 92.45 & 94.31  \\
-& branch & 63.82 & 67.80 \\
-& grass & 49.87 & 72.73  \\
-& leaf & 52.33 & 59.11 \\
-& milk-box  & 93.01 & 92.50 \\
-& plastic-bag & 88.94 & 92.51 \\
-& plastic-garbage & 75.84 & 74.89 \\
+& bottle & 92.45 & 94.95  \\
+& branch & 63.82 & 72.69 \\
+& grass & 49.87 & 73.60  \\
+& leaf & 52.33 & 59.54 \\
+& milk-box  & 93.01 & 91.75 \\
+& plastic-bag & 88.94 & 91.88 \\
+& plastic-garbage & 75.84 & 79.33 \\
 
 \bottomrule
 \end{tabular}
@@ -764,7 +764,7 @@ A confusion matrix is another way of presenting the performance of a classificat
 
 In this section two figures are presented, Figure \ref{fig:confusion matrix} (a) for the PP-YOLO model, and Figure \ref{fig:confusion matrix} (b) for the PP-YOLO-mobile model. In the two figures, the abscissa is the predicted label, and the ordinate is the true label. The value inside shows the relationship between the predicted value and the true value. Most of the values are on the diagonal line, that is, the predicted result is consistent with the real result. However, some of the predicted and true values are not equal, which indicates that they have a similar relationship between them.
 
-For example, in Figure \ref{fig:confusion matrix} (a), four objects that are actually plastic-bag are predicted to bottle, six objects that are actually ship are predicted to other, and seven objects that are actually speed-boat are predicted to ship. In Figure \ref{fig:confusion matrix} (b), the confusion of categories has been improved. Only two objects that are actually plastic-bag are predicted to bottle, five objects that are actually ship are predicted to other, and two objects that are actually speed-boat are predicted to ship. Above all, it can be seen that the PP-YOLO-mobile model reduces the probability of model recognition errors and improves the accuracy of recognition.
+For example, in Figure \ref{fig:confusion matrix} (a), four objects that are actually plastic-bag are predicted to bottle, six objects that are actually ship are predicted to other, and seven objects that are actually speed-boat are predicted to ship. In Figure \ref{fig:confusion matrix} (b), the confusion of categories has been improved. Only one objects that are actually plastic-bag are predicted to bottle, six objects that are actually ship are predicted to other, and three objects that are actually speed-boat are predicted to ship. Above all, it can be seen that the PP-YOLO-mobile model reduces the probability of model recognition errors and improves the accuracy of recognition.
 
 
 
@@ -796,23 +796,23 @@ Mean Average Precision (mAP) is the average value of AP, that is, the average of
 \label{fig:map}
 \end{figure}
 
-As can be seen from Figure \ref{fig:map}, with the increase of epoch, the trend of the mAP of the two models is rising. For the PP-YOLO model, at the 230th epoch, the mAP reached its maximum value of 84.1947. For the PP-YOLO-mobile model, it achieved the best detection result at the 190th epoch, with a value of 86.9339. In the end, the PP-YOLO-mobile model is 2.7392\% higher in accuracy than the PP-YOLO model in this experiment.
+As can be seen from Figure \ref{fig:map}, with the increase of epoch, the trend of the mAP of the two models is rising. For the PP-YOLO model, at the 230th epoch, the mAP reached its maximum value of 84.1947. For the PP-YOLO-mobile model, it achieved the best detection result at the 240th epoch, with a value of 87.0539. In the end, the PP-YOLO-mobile model is 2.8592\% higher in accuracy than the PP-YOLO model in this experiment.
 
 
 
-From the perspective of the degree of curve rise, the PP-YOLO model has reached 80 in mAP at the 50th epoch, while the PP-YOLO-mobile model needs 90 epochs to achieve this accuracy. This means that complex models have advantages in the number of training epochs, and only a small amount of training is required to achieve relatively high accuracy. After a certain number of training epochs, the mAP values of the PP-YOLO model and the PP-YOLO model both increase slowly or fluctuate slightly, and longer training steps are meaningless.
+From the perspective of the degree of curve rise, the PP-YOLO model has reached 80 in mAP at the 50th epoch, while the PP-YOLO-mobile model needs 80 epochs to achieve this accuracy. This means that complex models have advantages in the number of training epochs, and only a small amount of training is required to achieve relatively high accuracy. After a certain number of training epochs, the mAP values of the PP-YOLO model and the PP-YOLO model both increase slowly or fluctuate slightly, and longer training steps are meaningless.
 
 
 
 \subsection{Comparison of Speed}
 
-Frames per second (FPS) is a way to express how fast the method is. It measures the number of images processed on the model per second. The larger the FPS, the faster the model can detect the objects. The calculation formula of FPS is:
+Frames Per Second (FPS) is a way to express how fast the method is. It measures the number of images processed on the model per second. The larger the FPS, the faster the model can detect the objects. The calculation formula of FPS is:
 
 \begin{equation} 
 {FPS} = \frac {\text{Number\ of\ Images}} {\text{Total\ Seconds}}
 \end{equation}
 
-There are 1750 images in the validation set. It takes 47.525 seconds for PP-YOLO model to complete the detection, and 40.058 seconds for the PP-YOLO-mobile model. The value of FPS is usually used to indicate the speed of model detection. Table \ref{tbl:Comparison of FPS in the validation dataset} shows the results of FPS after calculation.
+There are 1750 images in the validation set. It takes 47.525 seconds for PP-YOLO model to complete the detection, and 38.265 seconds for the PP-YOLO-mobile model. Table \ref{tbl:Comparison of FPS in the validation dataset} shows the results of FPS after calculation.
 
 \end{paracol}
 \begin{table}[H]
@@ -823,7 +823,7 @@ There are 1750 images in the validation set. It takes 47.525 seconds for PP-YOLO
 \textbf{Model}&\textbf{Total Seconds}&\textbf{Frame Per Second (FPS)}&\textbf{Millisecond Per Frame}\\
 \midrule
 PP-YOLO model & 47.525&36.822&27\\
-PP-YOLO-mobile model&40.058&43.687&23\\
+PP-YOLO-mobile model&38.265&45.733&22\\
 \bottomrule
 \end{tabular}
 \label{tbl:Comparison of FPS in the validation dataset}
@@ -834,7 +834,7 @@ PP-YOLO-mobile model&40.058&43.687&23\\
 
 
 
-For the PP-YOLO-mobile model, it can detect 43.687 pictures per second, which is 6.865 more pictures than the PP-YOLO model. From another perspective, the PP-YOLO-mobile takes an average of 23 milliseconds per frame, which is four milliseconds less than the PP-YOLO model. In summary, the PP-YOLO-mobile model is faster than the PP-YOLO model in speed for object detection.
+For the PP-YOLO-mobile model, it can detect 45.733 pictures per second, which is 8.911 more pictures than the PP-YOLO model. From another perspective, the PP-YOLO-mobile takes an average of 23 milliseconds per frame, which is five milliseconds less than the PP-YOLO model. In summary, the PP-YOLO-mobile model is faster than the PP-YOLO model in speed for object detection.
 
 
 
@@ -852,15 +852,15 @@ Sine the PP-YOLO-mobile can improve performance by replacing backbone and data e
 \midrule
 A& PP-YOLO + ResNet50 (Benchmark) &84.1947 & 36.822\\
 \cmidrule(r){1-4}
-B& PP-YOLO + MobileNetV3-Small &82.7062 & 45.548\\
+B& PP-YOLO + MobileNetV3-Small &82.9544 & 47.518\\
 C& PP-YOLO + ResNet50 + Data Augmentation & 87.5855 & 32.454\\
-D& PP-YOLO + MobileNetV3-Small + Data Augmentation & 86.9339& 43.687\\
+D& PP-YOLO + MobileNetV3-Small + Data Augmentation & 87.0539& 45.733\\
 \bottomrule
 \end{tabular}
 \label{tbl:Results of ablation study}
 \end{table}
 
-Group A and Group D are the PP-YOLO and PP-YOLO-mobile models analyzed previously. Group B is a combination of PP-YOLO algorithm and MobileNetV3-Small backbone. Compared with the PP-YOLO model, the accuracy has dropped by 1.4885, but the speed has increased by 8.726. Group C has applied data augmentation based on Group A and achieved a precision increase of 3.3908, but FPS also decreased by 4.368.
+Group A and Group D are the PP-YOLO and PP-YOLO-mobile models analyzed previously. Group B is a combination of PP-YOLO algorithm and MobileNetV3-Small backbone. Compared with the PP-YOLO model, the accuracy has dropped by 1.2403, but the speed has increased by 10.696. Group C has applied data augmentation based on Group A and achieved a precision increase of 3.3908, but FPS also decreased by 4.368.
 
 Above all, Group C has the highest accuracy, and Group B has the fastest speed. Both MobileNetV3-Small backbone and data augmentation have their own effects, and one of them alone cannot bring about the improvement of overall performance.
 
@@ -877,14 +877,14 @@ Evaluation on the server with Tesla V100 GPU has achieved a good result. In real
 \textbf{Model}&\textbf{Original Size}&\textbf{Size after Pruning}&\textbf{mAP}&\textbf{FPS}\\
 \midrule
 PP-YOLO  & 219.2MB&33.5MB&83.4048&10.644\\
-PP-YOLO-mobile &173.4MB & 26.4MB&86.2752&16.527\\
+PP-YOLO-mobile &165.4MB & 25.3MB&86.6145&17.124\\
 \bottomrule
 \end{tabular}
 \label{tbl:performance on Jetson Nano}
 \end{table}
 
 
-After model pruning, the size of the model has been dramatically reduced, from 219.2MB to 33.5MB for the PP-YOLO model and 173.4MB to 26.4MB for the PP-YOLO-mobile model. At the same time, the accuracy of the model is only slightly reduced by 0.7899 and 0.6587. Compared with the PP-YOLO model, PP-YOLO-mobile model has increased by 5.883 in FPS, reaching a value of 16.527.
+After model pruning, the size of the model has been dramatically reduced, from 219.2MB to 33.5MB for the PP-YOLO model and 175.4MB to 25.3MB for the PP-YOLO-mobile model. At the same time, the accuracy of the model is only slightly reduced by 0.7899 and 0.4394. Compared with the PP-YOLO model, PP-YOLO-mobile model has increased by 6.48 in FPS, reaching a value of 17.124.
 
 
 
@@ -933,8 +933,8 @@ In some difficult obstacle recognition, such as in the recognition of leaves, gr
 
 
 To compare the detection effects of the two models vividly, we respectively selected two pictures in the test set from the SMD and custom dataset and drew the visualization pictures under the two models which are displayed in Figure \ref{Comparison of ground truth and prediction for two models in the testing set}. The first row is the pictures with ground-true labels. The second and third lines are their visualization effects under the PP-YOLO model and PP-YOLO-mobile model. 
-From the left column, the accuracy of different categories under the PP-YOLO-mobile model has been improved. Accuracy of the ship increased from 0.99 to 1.00, ferry increased from 0.96 to 0.99, and buoy increased from 0.97 to 0.99.
-Similarly, the accuracy in the second column has also been improved. The different bottles have been increased from 0.789 to 0.95, 0.75 to 0.90, and 0.94 to 0.96.
+From the left column, the accuracy of different categories under the PP-YOLO-mobile model has been improved. Accuracy of the ship increased from 0.99 to 1.00, ferry increased from 0.96 to 0.98, and buoy increased from 0.97 to 0.99.
+Similarly, the accuracy in the second column has also been improved. The different bottles have been increased from 0.89 to 0.98, 0.75 to 0.99, and 0.94 to 0.96.
 
 \begin{figure}[H]
 \centering
@@ -969,19 +969,19 @@ Similarly, the accuracy in the second column has also been improved. The differe
 
 As the detection and recognition of obstacles for USVs are challenging, this research aims to construct a model with high accuracy and high speed which can be used in real scenarios. By reading extensive literature and researching on the latest papers, the PP-YOLO algorithm is considered to be the most accurate one-stage algorithm. Compared with the two-stage algorithm, it does not require the region proposal stage and directly generates the class probability and position coordinate value of the object. After a single detection, the final detection result can be directly obtained, so it has a faster detection speed that can be used for USVs.
 
-By replacing the ResNet50 backbone in the original PP-YOLO model with the simpler MobileNetV3-Small backbone, plus the data augmentation method. The accuracy and speed of the model are improved at the same time. In detail, the accuracy is increased by 2.7392\% in mAP, and the speed is increased by 6.865 in FPS.
+By replacing the ResNet50 backbone in the original PP-YOLO model with the simpler MobileNetV3-Small backbone, plus the data augmentation method. The accuracy and speed of the model are improved at the same time. In detail, the accuracy is increased by 2.8592\% in mAP, and the speed is increased by 8.911 in FPS.
 
-By pruning the exported model, the size of the model is reduced from the original 173.4MB to 26.4MB. After being deployed on the Jetson Nano developer kit, the accuracy is 86.2752, and the FPS value is 16.527, which meets the requirements of real-time target detection for USVs.
+By pruning the exported model, the size of the model is reduced from the original 173.4MB to 26.4MB. After being deployed on the Jetson Nano developer kit, the accuracy is 86.6145, and the FPS value is 17.124, which meets the requirements of real-time target detection for USVs.
 
 \subsection{Major Findings}
 The results present that the PP-YOLO-mobile model has improved the average accuracy and speed of detection compared with the PP-YOLO model.
 
 \begin{itemize}
-\item{The accuracy of the PP-YOLO-mobile model for obstacle detection is 2.7392\% higher than that of the original PP-YOLO model, reaching 86.9339\%.}
+\item{The accuracy of the PP-YOLO-mobile model for obstacle detection is 2.8592\% higher than that of the original PP-YOLO model, reaching 87.0539\%.}
 \end{itemize}
 
 \begin{itemize}
-\item{The processing speed of the PP-YOLO-mobile model is 6.865 faster than that of the PP-YOLO model in FPS, reaching 43.687.}
+\item{The processing speed of the PP-YOLO-mobile model is 8.911 faster than that of the PP-YOLO model in FPS, reaching 45.733.}
 
 \end{itemize}
 
@@ -1009,7 +1009,7 @@ Through the whole process of the experiment, this research has achieved the foll
 
 \item Create a dataset of obstacles on the water surface, containing 17 categories, 8750 pictures with all label information.
 \item Propose a PP-YOLO-mobile model which has improved the original PP-YOLO model in accuracy and speed by backbone replacement and data augmentation.
-\item Generate an inference model with a size of only 26.4MB, with mAP of 86.2752 and FPS of 16.527 on the USV dataset.
+\item Generate an inference model with a size of only 25.3MB, with mAP of 86.6145 and FPS of 17.124 on the USV dataset.
 
 \end{enumerate}
 
